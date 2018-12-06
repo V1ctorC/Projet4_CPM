@@ -18,4 +18,12 @@ class TicketingController extends AbstractController
         return $this->render('Ticketing/homepage.html.twig');
     }
 
+    /**
+     * @Route ("/contact_information")
+     */
+    public function contactInformation()
+    {
+        return $this->render('Ticketing/contactInformation.html.twig');
+    }
+
 }

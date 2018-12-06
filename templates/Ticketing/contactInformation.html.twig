@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Réservation</h1>
+
+    <h2>Vos coordonnées</h2>
+
+    <div class="jumbotron">
+        <p>Billet n° 1</p>
+        <input type="text" placeholder="Nom">
+        <input type="text" placeholder="Prénom">
+        <input type="date" placeholder="Date de naissance">
+        <input type="text" placeholder="Pays">
+        <div id="reducedPrice">
+            <input type="checkbox" name="reduced" id="reduced">
+            <label for="reduced">Tarif réduit ?</label>
+        </div>
+
+    </div>
+
+    <div class="jumbotron">
+        <p>Billet n° 2</p>
+        <input type="text" placeholder="Nom">
+        <input type="text" placeholder="Prénom">
+        <input type="date" placeholder="Date de naissance">
+        <input type="text" placeholder="Pays">
+        <div id="reducedPrice">
+            <input type="checkbox" name="reduced" id="reduced">
+            <label for="reduced">Tarif réduit ?</label>
+        </div>
+
+    </div>
+
+    <div class="jumbotron">
+        <p>Billet n° 3</p>
+        <input type="text" placeholder="Nom">
+        <input type="text" placeholder="Prénom">
+        <input type="date" placeholder="Date de naissance">
+        <input type="text" placeholder="Pays">
+        <div id="reducedPrice">
+            <input type="checkbox" name="reduced" id="reduced">
+            <label for="reduced">Tarif réduit ?</label>
+        </div>
+
+    </div>
+
+    <button type="button" class="btn btn-primary"><a href="#">Résumé de vos billets</a></button>
+
+{% endblock %}
