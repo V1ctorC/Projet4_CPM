@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div id="welcomeMessage">
+        <h1>Billeterie du musée du Louvre</h1>
+        <p>Achetez dès maintenant vos billets pour éviter la file d'attente !</p>
+    </div>
+
+    <button type="button" class="btn btn-primary">Acheter vos billets</button>
+
+    <div id="pricing">
+        <h2 id="princingTitle">Les tarifs</h2>
+        <div class="jumbotron" id="listPrice">
+            <ul>
+                <li>Tarif normal (à partir de 12 ans) : 16€</li>
+                <li>Tarif enfant (à partir de 4 ans et jusqu'à 12 ans : 8€</li>
+                <li>Tarif senior (à partir de 60 ans) : 12€</li>
+                <li>Tarif réduit (Étudiant, employé du musée, d'un ministère de la Culture, militaire ...) : 10€</li>
+            </ul>
+        </div>
+    </div>
+    <div id="ticketing">
+        <h2 id="ticketingTitle">Billetterie</h2>
+        <div id="calendar" style="border: 2px solid red">
+            Ici calendrier
+        </div>
+        <div id="ticketType">
+            <button type="button" class="btn btn-dark">1/2 journée</button>
+            <button type="button" class="btn btn-dark">1 journée</button>
+        </div>
+        <div>
+            <p>Nombre de tickets ?</p>
+            <input type="number"> <br />
+
+            <button type="submit" class="btn btn-primary">Continuer la réservation</button>
+        </div>
+    </div>
+
+{% endblock %}

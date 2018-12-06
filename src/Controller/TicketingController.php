@@ -4,9 +4,10 @@ namespace App\Controller;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class TicketingController
+class TicketingController extends AbstractController
 {
 
     /**
@@ -14,7 +15,7 @@ class TicketingController
      */
     public function homepage()
     {
-        return new Response('Page accueil du site');
+        return $this->render('Ticketing/homepage.html.twig');
     }
 
 }
