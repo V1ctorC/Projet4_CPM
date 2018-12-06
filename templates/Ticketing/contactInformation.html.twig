@@ -4,6 +4,19 @@
 
     <h1>Vos coordonnées</h1>
 
+    {{ form_start(form) }}
+
+        {{ form_row(form.firstname) }}
+        {{ form_row(form.lastname) }}
+        {{ form_row(form.birthdate) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.country) }}
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+
+    {{ form_end(form) }}
+
+
     <div class="jumbotron">
         <p>Billet n° 1</p>
         <input type="text" placeholder="Nom">
