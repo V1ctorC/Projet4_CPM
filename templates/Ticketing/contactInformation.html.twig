@@ -2,9 +2,7 @@
 
 {% block body %}
 
-    <h1>Réservation</h1>
-
-    <h2>Vos coordonnées</h2>
+    <h1>Vos coordonnées</h1>
 
     <div class="jumbotron">
         <p>Billet n° 1</p>
@@ -45,6 +43,6 @@
 
     </div>
 
-    <button type="button" class="btn btn-primary"><a href="#">Résumé de vos billets</a></button>
+    <button type="button" class="btn btn-primary"><a href="{{ path('app_ticketing_summary') }}">Résumé de vos billets</a></button>
 
 {% endblock %}
