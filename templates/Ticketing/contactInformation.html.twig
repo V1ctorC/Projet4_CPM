@@ -4,6 +4,13 @@
 
     <h1>Vos coordonnées</h1>
 
+
+    {% for i in 1..number %}
+
+        <p>Coucou {{ i }}</p>
+
+    {% endfor %}
+
     {{ form_start(form) }}
 
         {{ form_row(form.firstname) }}

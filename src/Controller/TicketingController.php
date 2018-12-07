@@ -2,11 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Ticket;
 use App\Entity\User;
 use App\Form\UserType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,16 +15,24 @@ class TicketingController extends AbstractController
     /**
      * @Route("/")
      */
-    public function homepage()
+    public function homepage(Request $request)
     {
+        $ticket = new Ticket();
+        $em = $this->getDoctrine()->getManager();
+
+        $ticket->setType('1 journée');
+        $nombreTicket = 0;
+
         return $this->render('Ticketing/homepage.html.twig');
     }
 
     /**
      * @Route ("/contact_information")
      */
+
     public function contactInformation(Request $request)
     {
+        $number = $request->request->get('number');
         $user = new User();
         $em = $this->getDoctrine()->getManager();
 
@@ -40,7 +46,7 @@ class TicketingController extends AbstractController
         }
 
         return $this->render('Ticketing/contactInformation.html.twig', array(
-            'form' => $form->createView(),
+            'form' => $form->createView(), 'number' => $number
         ));
     }
 

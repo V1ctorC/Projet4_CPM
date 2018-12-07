@@ -23,7 +23,7 @@
     <div id="ticketing">
         <h2 id="ticketingTitle">Billetterie</h2>
         <div id="calendar" style="border: 2px solid red">
-            Ici calendrier
+            <input type="text" placeholder="Date de la visite" id="datepicker" readonly="readonly">
         </div>
         <div id="ticketType">
             <button type="button" class="btn btn-dark">1/2 journée</button>
@@ -31,10 +31,51 @@
         </div>
         <div>
             <p>Nombre de tickets ?</p>
-            <input type="number"> <br />
+            <form action="{{ path('app_ticketing_contactinformation') }}" method="post">
+                <input type="number" placeholder="nombre de billets" name="number"> <br />
+                <input type="submit">
+            </form>
+
 
             <button type="button" class="btn btn-primary"><a href="{{ path('app_ticketing_contactinformation') }}" >Continuer la réservation</a></button>
         </div>
     </div>
+
+    <script>
+
+        var holidays = ["12/25/2018", "01/01/2019","05/01/2019", "05/08/2019", "05/10/2019", "05/21/2019",
+            "07/14/2019", "08/15/2019", "11/01/2019", "11/11/2019", "12/25/2019"];
+
+
+        $( function() {
+            $( "#datepicker" ).datepicker({
+                minDate : '0',
+                dateFormat : "dd/mm/yy",
+                dayNames: [ "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" ],
+                dayNamesMin: [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ],
+                dayNamesShort: [ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ],
+                firstDay : 1,
+                monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre" ],
+                monthNamesShort: [ "Jan", "Fev", "Mars", "Avr", "Mai", "Juin", "Jul", "Août", "Sep", "Oct", "Nov", "Dec" ],
+                beforeShowDay: function(date){
+                    show = true;
+                    if(date.getDay() == 0)
+                    {
+                        show = false;
+                    }
+                    for (var i = 0; i < holidays.length; i++) {
+                        if (new Date(holidays[i]).toString() == date.toString())
+                        {
+                            show = false;
+                        }
+                    }
+                    var display = [show,'',(show)?'':'Hors dimanche et jours fériés'];
+                    return display;
+                }
+
+            });
+        } );
+    </script>
+
 
 {% endblock %}
