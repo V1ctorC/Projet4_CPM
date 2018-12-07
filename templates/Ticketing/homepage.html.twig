@@ -23,7 +23,7 @@
     <div id="ticketing">
         <h2 id="ticketingTitle">Billetterie</h2>
         <div id="calendar" style="border: 2px solid red">
-            <input type="text" placeholder="Date de la visite" id="datepicker" readonly="readonly">
+            <!--<input type="text" placeholder="Date de la visite" id"datepicker" readonly="readonly">-->
         </div>
         <div id="ticketType">
             <button type="button" class="btn btn-dark">1/2 journée</button>
@@ -33,6 +33,18 @@
             <p>Nombre de tickets ?</p>
             <form action="{{ path('app_ticketing_contactinformation') }}" method="post">
                 <input type="number" placeholder="nombre de billets" name="number"> <br />
+                <input type="text" placeholder="Date de la visite" id="datepicker" readonly="readonly" name="azerty">
+                <p>Veuillez choisir votre billet :</p>
+                <div>
+                    <input type="radio" id="halfDay"
+                           name="ticketType" value="1/2 day">
+                    <label for="halfDay">1/2 journée</label>
+
+                    <input type="radio" id="wholeDay"
+                           name="ticketType" value="1 day">
+                    <label for="wholeDay">Journée</label>
+
+                </div>
                 <input type="submit">
             </form>
 

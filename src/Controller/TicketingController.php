@@ -33,6 +33,8 @@ class TicketingController extends AbstractController
     public function contactInformation(Request $request)
     {
         $number = $request->request->get('number');
+        $azerty = $request->request->get('azerty');
+        $ticketType = $request->request->get('ticketType');
         $user = new User();
         $em = $this->getDoctrine()->getManager();
 
@@ -46,7 +48,7 @@ class TicketingController extends AbstractController
         }
 
         return $this->render('Ticketing/contactInformation.html.twig', array(
-            'form' => $form->createView(), 'number' => $number
+            'form' => $form->createView(), 'number' => $number, 'azerty' => $azerty, 'ticketType' => $ticketType
         ));
     }
 
