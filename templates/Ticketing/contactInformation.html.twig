@@ -4,16 +4,8 @@
 
     <h1>Vos coordonnées</h1>
 
-
-    {% for i in 1..number %}
-
-        <p>Coucou {{ i }}</p>
-
-    {% endfor %}
-
-    <p> La date est : {{ azerty }} </p>
-
-    <p>Type de ticket : {{ ticketType }}</p>
+    <p> Vous allez acheter {{ number }} {% if number > 1 %} billets {% else %} billet {% endif %} pour {{ ticketType }}
+    journée au musée du Louvre le {{ dateVisit }}</p>
 
     {{ form_start(form) }}
 

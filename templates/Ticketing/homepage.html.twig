@@ -22,30 +22,36 @@
     </div>
     <div id="ticketing">
         <h2 id="ticketingTitle">Billetterie</h2>
-        <div id="calendar" style="border: 2px solid red">
+        <div id="calendar">
             <!--<input type="text" placeholder="Date de la visite" id"datepicker" readonly="readonly">-->
         </div>
-        <div id="ticketType">
+        <!--<div id="ticketType">
             <button type="button" class="btn btn-dark">1/2 journée</button>
             <button type="button" class="btn btn-dark">1 journée</button>
-        </div>
+        </div>-->
         <div>
-            <p>Nombre de tickets ?</p>
             <form action="{{ path('app_ticketing_contactinformation') }}" method="post">
-                <input type="number" placeholder="nombre de billets" name="number"> <br />
-                <input type="text" placeholder="Date de la visite" id="datepicker" readonly="readonly" name="azerty">
+                <label for="number">Nombre de billets ?</label>
+                <select name="number">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select> <br />
+                <input type="text" placeholder="Date de la visite" id="datepicker" readonly="readonly" name="dateVisit">
                 <p>Veuillez choisir votre billet :</p>
                 <div>
                     <input type="radio" id="halfDay"
-                           name="ticketType" value="1/2 day">
+                           name="ticketType" value="1/2">
                     <label for="halfDay">1/2 journée</label>
 
                     <input type="radio" id="wholeDay"
-                           name="ticketType" value="1 day">
+                           name="ticketType" value="1">
                     <label for="wholeDay">Journée</label>
 
                 </div>
-                <input type="submit">
+                <input type="submit" class="btn btn-primary">
             </form>
 
 
