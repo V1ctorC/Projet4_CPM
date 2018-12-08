@@ -11,7 +11,7 @@
 
         {{ form_row(form.firstname) }}
         {{ form_row(form.lastname) }}
-        {{ form_row(form.birthdate) }}
+        {{ form_row(form.birthdate, {'attr': {'readonly' : true}}) }}
         {{ form_row(form.email) }}
         {{ form_row(form.country) }}
 
@@ -60,5 +60,22 @@
     </div>
 
     <button type="button" class="btn btn-primary"><a href="{{ path('app_ticketing_summary') }}">Résumé de vos billets</a></button>
+
+    <script>
+        $( function () {
+            $("#user_birthdate").datepicker({
+                maxDate : '0' ,
+                changeMonth : true ,
+                changeYear : true ,
+                yearRange : '1900:+0' ,
+                dateFormat : "dd/mm/yy",
+                dayNames: [ "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" ],
+                dayNamesMin: [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ],
+                dayNamesShort: [ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ],
+                monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre" ],
+                monthNamesShort: [ "Jan", "Fev", "Mars", "Avr", "Mai", "Juin", "Jul", "Août", "Sep", "Oct", "Nov", "Dec" ],
+            });
+        });
+    </script>
 
 {% endblock %}
