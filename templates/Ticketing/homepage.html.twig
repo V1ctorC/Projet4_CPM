@@ -64,7 +64,14 @@
 
         var date = new Date();
 
-        var heure = date.getHours();
+        var UTChours = date.getUTCHours();
+        var heure = UTChours + 1;
+        
+        if (heure > 23)
+        {
+            heure = heure - 24;
+        }
+
 
         if (heure < 14)
         {
