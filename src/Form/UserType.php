@@ -19,7 +19,7 @@ class UserType extends AbstractType
             ->add('lastname')
             ->add('birthdate')
             ->add('email')
-            ->add('country', CountryType::class)
+            ->add('country', CountryType::class, ["preferred_choices" => array('FR')])
         ;
     }
 

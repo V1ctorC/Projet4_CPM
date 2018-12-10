@@ -6,6 +6,7 @@ use App\Entity\Ticket;
 use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -30,7 +31,7 @@ class TicketingController extends AbstractController
      * @Route ("/contact_information")
      */
 
-    public function contactInformation(Request $request)
+    public function contactInformation(Request $request, Session $session)
     {
         $number = $request->request->get('number');
         $dateVisit = $request->request->get('dateVisit');
@@ -44,7 +45,14 @@ class TicketingController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $user = $form->getData();
+            $em->persist($user);
+            $em->flush();
+            $userID = $user->getId();
+
+            $session->set('userID', $userID);
+
+
+            return $this->redirectToRoute('app_ticketing_summary');
         }
 
         return $this->render('Ticketing/contactInformation.html.twig', array(
@@ -55,8 +63,15 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/summary")
      */
-    public function summary()
+    public function summary(Session $session)
     {
-        return $this->render('Ticketing/summary.html.twig');
+        $userID = $session->get('userID');
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getDoctrine()->getRepository(User::class)->find($userID);
+
+
+
+
+        return $this->render('Ticketing/summary.html.twig', array('user'=>$user));
     }
 }

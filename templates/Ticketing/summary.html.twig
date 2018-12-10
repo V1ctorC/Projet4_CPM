@@ -4,6 +4,23 @@
 
     <h1>Résumé de votre réservation</h1>
 
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date naissance</th>
+            <th>Pays</th>
+            <th>Prix</th>
+        </tr>
+        <tr>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.birthdate }}</td>
+            <td>{{ user.country }}</td>
+            <td></td>
+        </tr>
+    </table>
+
     <div class="jumbotron">
         <h2>Tableau récapitulatif</h2>
         <table class="table">
