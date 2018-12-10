@@ -26,4 +26,28 @@ class CalculationDate
         }
 
     }
+
+    public function priceAge($age)
+    {
+        /*if ($reduced == true)
+        {
+            return $price = 10;
+        }*/
+        if (($age < 12) && ($age > 4) )
+        {
+            return $price = 8;
+        }
+        elseif ($age < 4)
+        {
+            return $price = 0;
+        }
+        elseif ($age >= 60)
+        {
+            return $price = 12;
+        }
+        else
+        {
+            return $price = 16;
+        }
+    }
 }

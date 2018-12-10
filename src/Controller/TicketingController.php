@@ -72,9 +72,10 @@ class TicketingController extends AbstractController
         $datenaissance = $user->getBirthdate();
 
         $age = $calculationDate->getAge($datenaissance);
+        $price = $calculationDate->priceAge($age);
 
 
 
-        return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'age' => $age));
+        return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'age' => $age, 'price' => $price));
     }
 }
