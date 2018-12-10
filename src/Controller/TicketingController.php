@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Ticket;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Service\CalculationDate;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
@@ -63,15 +64,17 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/summary")
      */
-    public function summary(Session $session)
+    public function summary(Session $session, CalculationDate $calculationDate)
     {
         $userID = $session->get('userID');
         $em = $this->getDoctrine()->getManager();
         $user = $this->getDoctrine()->getRepository(User::class)->find($userID);
+        $datenaissance = $user->getBirthdate();
+
+        $age = $calculationDate->getAge($datenaissance);
 
 
 
-
-        return $this->render('Ticketing/summary.html.twig', array('user'=>$user));
+        return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'age' => $age));
     }
 }
