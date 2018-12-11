@@ -4,20 +4,16 @@
 
     <h1>Vos coordonnées</h1>
 
-    <p> Vous allez acheter {{ number }} {% if number > 1 %} billets {% else %} billet {% endif %} pour {{ ticketType }}
-    journée au musée du Louvre le {{ dateVisit }}</p>
+{% for formType in form %}
 
     {{ form_start(form) }}
 
-        {{ form_row(form.firstname) }}
-        {{ form_row(form.lastname) }}
-        {{ form_row(form.birthdate, {'attr': {'readonly' : true}}) }}
-        {{ form_row(form.country) }}
-        {{ form_row(form.reducedprice) }}
-
-        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <input type="submit">
 
     {{ form_end(form) }}
+
+{% endfor %}
+
 
 
     <div class="jumbotron">

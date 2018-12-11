@@ -7,6 +7,7 @@ use App\Entity\Information;
 use App\Form\BookingType;
 use App\Form\InformationType;
 use App\Service\CalculationDate;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,15 +23,15 @@ class TicketingController extends AbstractController
     {
         $booking = new Booking();
         $form = $this->createForm(BookingType::class, $booking);
-        $em = $this->getDoctrine()->getManager();
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $session->set('quantity', $booking->getQuantity());
-            $em->persist($booking);
-            $em->flush();
+            $characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            $bookingNumber = substr(str_shuffle(str_repeat($characters, 10)), 0, 10);
+
+
+            $session->set('booking', $form->getData());
 
             return $this->redirectToRoute('app_ticketing_contactinformation');
         }
@@ -44,13 +45,20 @@ class TicketingController extends AbstractController
 
     public function contactInformation(Request $request, Session $session)
     {
-        $number = $session->get('quantity');
-        $dateVisit = $request->request->get('dateVisit');
-        $ticketType = $request->request->get('ticketType');
-        $user = new Information();
+
+        $booking = $session->get('booking');
+        $quantity = $booking->getBookingNumber();
+
+        for ($i = 0; $i < 3; $i++)
+        {
+            $user[$i] = new Information();
+        }
+
+        //$user = new Information();
         $em = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(InformationType::class, $user);
+        //$form = $this->createForm(InformationType::class, $user);
+        $form = $this->createForm(CollectionType::class, $user, ['entry_type' => InformationType::class]);
 
         $form->handleRequest($request);
 
@@ -58,17 +66,15 @@ class TicketingController extends AbstractController
         {
             $em->persist($user);
             $em->flush();
-            $userID = $user->getId();
-
-            $session->set('userID', $userID);
 
 
             return $this->redirectToRoute('app_ticketing_summary');
         }
 
+        dump($form);
+
         return $this->render('Ticketing/contactInformation.html.twig', array(
-            'form' => $form->createView(), 'number' => $number, 'dateVisit' => $dateVisit, 'ticketType' => $ticketType
-        ));
+            'form' => $form->createView()));
     }
 
     /**
