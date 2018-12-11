@@ -41,6 +41,11 @@ class Information
      */
     private $reducedprice;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Booking", inversedBy="information")
+     */
+    private $idbooking;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +107,18 @@ class Information
     public function setReducedprice(bool $reducedprice): self
     {
         $this->reducedprice = $reducedprice;
+
+        return $this;
+    }
+
+    public function getIdbooking(): ?Booking
+    {
+        return $this->idbooking;
+    }
+
+    public function setIdbooking(?Booking $idbooking): self
+    {
+        $this->idbooking = $idbooking;
 
         return $this;
     }

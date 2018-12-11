@@ -45,39 +45,32 @@ class TicketingController extends AbstractController
 
     public function contactInformation(Request $request, Session $session)
     {
-
         $booking = $session->get('booking');
-        $quantity = $booking->getBookingNumber();
+        $quantity = $booking->getQuantity();
 
-        for ($i = 0; $i < 3; $i++)
+        for ($i = 0; $i < $quantity; $i++)
         {
             $user[$i] = new Information();
         }
 
-        //$user = new Information();
         $em = $this->getDoctrine()->getManager();
 
-        //$form = $this->createForm(InformationType::class, $user);
         $form = $this->createForm(CollectionType::class, $user, ['entry_type' => InformationType::class]);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            for ($i=0;$i<3;$i++)
+            for ($i=0;$i<$quantity;$i++)
             {
-                $test = $user[$i];
-                $em->persist($test);
+                $customer = $user[$i];
+                $em->persist($customer);
             }
-
             $em->flush();
-
-            //$em->flush();
+            $session->set('user', $user);
 
             //return $this->redirectToRoute('app_ticketing_summary');
         }
-
-        dump($form);
 
         return $this->render('Ticketing/contactInformation.html.twig', array(
             'form' => $form->createView()));
@@ -91,10 +84,11 @@ class TicketingController extends AbstractController
         $userID = $session->get('userID');
         $em = $this->getDoctrine()->getManager();
         $user = $this->getDoctrine()->getRepository(Information::class)->find($userID);
-        $datenaissance = $user->getBirthdate();
+        dump($userID);
+        /*$datenaissance = $user->getBirthdate();
 
         $age = $calculationDate->getAge($datenaissance);
-        $price = $calculationDate->priceAge($age);
+        $price = $calculationDate->priceAge($age);*/
 
 
 

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,9 +43,15 @@ class Booking
      */
     private $quantity;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Information", mappedBy="idbooking")
+     */
+    private $information;
+
     public function __construct()
     {
         $this->setPaid(0);
+        $this->information = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -107,6 +115,37 @@ class Booking
     public function setQuantity(int $quantity): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Information[]
+     */
+    public function getInformation(): Collection
+    {
+        return $this->information;
+    }
+
+    public function addInformation(Information $information): self
+    {
+        if (!$this->information->contains($information)) {
+            $this->information[] = $information;
+            $information->setIdbooking($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInformation(Information $information): self
+    {
+        if ($this->information->contains($information)) {
+            $this->information->removeElement($information);
+            // set the owning side to null (unless already changed)
+            if ($information->getIdbooking() === $this) {
+                $information->setIdbooking(null);
+            }
+        }
 
         return $this;
     }
