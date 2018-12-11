@@ -12,8 +12,8 @@
         {{ form_row(form.firstname) }}
         {{ form_row(form.lastname) }}
         {{ form_row(form.birthdate, {'attr': {'readonly' : true}}) }}
-        {{ form_row(form.email) }}
         {{ form_row(form.country) }}
+        {{ form_row(form.reducedprice) }}
 
         <button type="submit" class="btn btn-primary">Envoyer</button>
 
@@ -63,7 +63,7 @@
 
     <script>
         $( function () {
-            $("#user_birthdate").datepicker({
+            $("#information_birthdate").datepicker({
                 maxDate : '0' ,
                 changeMonth : true ,
                 changeYear : true ,

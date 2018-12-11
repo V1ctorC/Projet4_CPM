@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Ticket;
-use App\Entity\User;
-use App\Form\UserType;
+use App\Entity\Booking;
+use App\Entity\Information;
+use App\Form\InformationType;
 use App\Service\CalculationDate;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -19,11 +19,11 @@ class TicketingController extends AbstractController
      */
     public function homepage(Request $request)
     {
-        $ticket = new Ticket();
+        $booking = new Booking();
         $em = $this->getDoctrine()->getManager();
 
-        $ticket->setType('1 journée');
-        $nombreTicket = 0;
+        $booking->setType('1 journée');
+        $booking->setQuantity(1);
 
         return $this->render('Ticketing/homepage.html.twig');
     }
@@ -37,10 +37,10 @@ class TicketingController extends AbstractController
         $number = $request->request->get('number');
         $dateVisit = $request->request->get('dateVisit');
         $ticketType = $request->request->get('ticketType');
-        $user = new User();
+        $user = new Information();
         $em = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(InformationType::class, $user);
 
         $form->handleRequest($request);
 
@@ -68,7 +68,7 @@ class TicketingController extends AbstractController
     {
         $userID = $session->get('userID');
         $em = $this->getDoctrine()->getManager();
-        $user = $this->getDoctrine()->getRepository(User::class)->find($userID);
+        $user = $this->getDoctrine()->getRepository(Information::class)->find($userID);
         $datenaissance = $user->getBirthdate();
 
         $age = $calculationDate->getAge($datenaissance);
