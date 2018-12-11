@@ -64,11 +64,17 @@ class TicketingController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $em->persist($user);
+            for ($i=0;$i<3;$i++)
+            {
+                $test = $user[$i];
+                $em->persist($test);
+            }
+
             $em->flush();
 
+            //$em->flush();
 
-            return $this->redirectToRoute('app_ticketing_summary');
+            //return $this->redirectToRoute('app_ticketing_summary');
         }
 
         dump($form);
