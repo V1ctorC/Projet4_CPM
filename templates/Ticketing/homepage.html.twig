@@ -30,6 +30,7 @@
             <button type="button" class="btn btn-dark">1 journée</button>
         </div>-->
         <div>
+            <!--
             <form action="{{ path('app_ticketing_contactinformation') }}" method="post">
                 <label for="number">Nombre de billets ?</label>
                 <select name="number">
@@ -56,7 +57,20 @@
 
 
             <button type="button" class="btn btn-primary"><a href="{{ path('app_ticketing_contactinformation') }}" >Continuer la réservation</a></button>
-        </div>
+        </div>-->
+
+            {{ form_start(form) }}
+
+            {{ form_row(form.bookingnumber) }}
+            {{ form_row(form.bookingday) }}
+            {{ form_row(form.type) }}
+            {{ form_row(form.quantity) }}
+
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+
+            {{ form_end(form) }}
+
+
     </div>
 
     <script>
@@ -87,7 +101,7 @@
 
 
         $( function() {
-            $( "#datepicker" ).datepicker({
+            $( "#booking_bookingday" ).datepicker({
                 minDate : todayticket,
                 maxDate : '+1Y',
                 dateFormat : "dd/mm/yy",
@@ -95,7 +109,7 @@
                 dayNamesMin: [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ],
                 dayNamesShort: [ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ],
                 firstDay : 1,
-                monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre" ],
+                monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ],
                 monthNamesShort: [ "Jan", "Fev", "Mars", "Avr", "Mai", "Juin", "Jul", "Août", "Sep", "Oct", "Nov", "Dec" ],
                 beforeShowDay: function(date){
                     show = true;

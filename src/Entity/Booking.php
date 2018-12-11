@@ -22,7 +22,7 @@ class Booking
     private $bookingnumber;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string", length=255)
      */
     private $bookingday;
 
@@ -41,6 +41,11 @@ class Booking
      */
     private $quantity;
 
+    public function __construct()
+    {
+        $this->setPaid(0);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -58,12 +63,12 @@ class Booking
         return $this;
     }
 
-    public function getBookingday(): ?\DateTimeInterface
+    public function getBookingday(): ?string
     {
         return $this->bookingday;
     }
 
-    public function setBookingday(\DateTimeInterface $bookingday): self
+    public function setBookingday(string $bookingday): self
     {
         $this->bookingday = $bookingday;
 

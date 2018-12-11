@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Booking;
 use App\Entity\Information;
+use App\Form\BookingType;
 use App\Form\InformationType;
 use App\Service\CalculationDate;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,15 +18,24 @@ class TicketingController extends AbstractController
     /**
      * @Route("/")
      */
-    public function homepage(Request $request)
+    public function homepage(Request $request, Session $session)
     {
         $booking = new Booking();
+        $form = $this->createForm(BookingType::class, $booking);
         $em = $this->getDoctrine()->getManager();
 
-        $booking->setType('1 journée');
-        $booking->setQuantity(1);
+        $form->handleRequest($request);
 
-        return $this->render('Ticketing/homepage.html.twig');
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $session->set('quantity', $booking->getQuantity());
+            $em->persist($booking);
+            $em->flush();
+
+            return $this->redirectToRoute('app_ticketing_contactinformation');
+        }
+
+        return $this->render('Ticketing/homepage.html.twig', array('form'=>$form->createView()));
     }
 
     /**
@@ -34,7 +44,7 @@ class TicketingController extends AbstractController
 
     public function contactInformation(Request $request, Session $session)
     {
-        $number = $request->request->get('number');
+        $number = $session->get('quantity');
         $dateVisit = $request->request->get('dateVisit');
         $ticketType = $request->request->get('ticketType');
         $user = new Information();
