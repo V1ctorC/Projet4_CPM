@@ -64,12 +64,14 @@ class TicketingController extends AbstractController
             for ($i=0;$i<$quantity;$i++)
             {
                 $customer = $user[$i];
+
                 $em->persist($customer);
+                $em->flush();
+
             }
-            $em->flush();
             $session->set('user', $user);
 
-            //return $this->redirectToRoute('app_ticketing_summary');
+            return $this->redirectToRoute('app_ticketing_summary');
         }
 
         return $this->render('Ticketing/contactInformation.html.twig', array(
@@ -81,7 +83,18 @@ class TicketingController extends AbstractController
      */
     public function summary(Session $session, CalculationDate $calculationDate)
     {
-        $userID = $session->get('userID');
+        $user = $session->get('user');
+
+        foreach ($user as $customer)
+        {
+            $anniversaire = $customer->getBirthdate();
+            $age = $calculationDate->getAge($anniversaire);
+            $price = $calculationDate->priceAge($age);
+            dump($age);
+            dump($price)
+        }
+
+        /*$user = $session->get('user');
         $em = $this->getDoctrine()->getManager();
         $user = $this->getDoctrine()->getRepository(Information::class)->find($userID);
         dump($userID);
@@ -92,6 +105,6 @@ class TicketingController extends AbstractController
 
 
 
-        return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'age' => $age, 'price' => $price));
+        return $this->render('Ticketing/summary.html.twig', array('user'=>$user));
     }
 }

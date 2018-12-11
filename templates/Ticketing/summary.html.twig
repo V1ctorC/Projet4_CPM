@@ -13,14 +13,15 @@
             <th>Age</th>
             <th>Prix</th>
         </tr>
+        {% for customer in user %}
         <tr>
-            <td>{{ user.lastname }}</td>
-            <td>{{ user.firstname }}</td>
-            <td>{{ user.birthdate }}</td>
-            <td>{{ user.country }}</td>
-            <td>{{ age }}</td>
-            <td>{{ price }}</td>
+            <td>{{ customer.lastname }}</td>
+            <td>{{ customer.firstname }}</td>
+            <td>{{ customer.birthdate }}</td>
+            <td>{{ customer.country }}</td>
+
         </tr>
+        {% endfor %}
     </table>
 
     <div class="jumbotron">
