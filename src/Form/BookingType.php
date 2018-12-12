@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Booking;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +18,14 @@ class BookingType extends AbstractType
                 array('attr' => array(
                     'readonly' => true,
                 )))
-            ->add('type')
+            ->add('type', ChoiceType::class, array(
+                'choices' => array(
+                    '1 journée' => 'W',
+                    '1/2 journée' => 'H',
+                ),
+                'expanded' => true,
+                'required' => true,
+            ))
             ->add('quantity')
         ;
     }

@@ -29,7 +29,7 @@ class TicketingController extends AbstractController
         {
             $characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             $bookingNumber = substr(str_shuffle(str_repeat($characters, 10)), 0, 10);
-
+            $booking->setBookingnumber($bookingNumber);
 
             $session->set('booking', $form->getData());
 
@@ -61,15 +61,17 @@ class TicketingController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            $em->persist($booking);
+
             for ($i=0;$i<$quantity;$i++)
             {
                 $customer = $user[$i];
                 $customer->setAge($calculationDate->getAge($customer->getBirthdate()));
                 $customer->setPrice($calculationDate->priceAge($customer->getAge(), $customer->getReducedprice()));
+                $customer->setIdbooking($booking);
                 $em->persist($customer);
-                $em->flush();
-
             }
+            $em->flush();
             $session->set('user', $user);
 
             return $this->redirectToRoute('app_ticketing_summary');
