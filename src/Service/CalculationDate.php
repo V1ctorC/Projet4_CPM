@@ -27,12 +27,12 @@ class CalculationDate
 
     }
 
-    public function priceAge($age)
+    public function priceAge($age, $reduced)
     {
-        /*if ($reduced == true)
+        if ($reduced == true)
         {
             return $price = 10;
-        }*/
+        }
         if (($age < 12) && ($age > 4) )
         {
             return $price = 8;

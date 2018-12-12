@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09f4d163-0884-4c6b-b0b9-64766a4f8238" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20181212082530.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TicketingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TicketingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Information.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Information.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/CalculationDate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CalculationDate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Ticketing/summary.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Ticketing/summary.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,14 +23,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
+            <state relative-caret-position="229">
+              <caret line="72" column="41" selection-start-line="72" selection-start-column="41" selection-end-line="72" selection-end-column="41" />
               <folding>
                 <element signature="e#34#57#0#PHP" expanded="true" />
-                <element signature="e#1209#1243#1#PHP" expanded="true" />
-                <element signature="e#2093#2116#1#PHP" expanded="true" />
-                <element signature="e#2142#2182#0#PHP" expanded="true" />
-                <element signature="e#2892#2921#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -36,8 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Service/CalculationDate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+            <state relative-caret-position="305">
+              <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -45,8 +44,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Information.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+            <state relative-caret-position="914">
+              <caret line="159" selection-start-line="159" selection-end-line="159" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Booking.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="750">
+              <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+              <folding>
+                <element signature="e#30#78#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/Ticketing/summary.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
-              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+            <state relative-caret-position="294">
+              <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -92,7 +103,6 @@
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Form/UserType.php" />
-        <option value="$PROJECT_DIR$/src/Service/CalculationDate.php" />
         <option value="$PROJECT_DIR$/src/Form/InformationType.php" />
         <option value="$PROJECT_DIR$/src/Entity/Information.php" />
         <option value="$PROJECT_DIR$/src/Form/BookingType.php" />
@@ -100,6 +110,7 @@
         <option value="$PROJECT_DIR$/templates/Ticketing/homepage.html.twig" />
         <option value="$PROJECT_DIR$/templates/Ticketing/contactInformation.html.twig" />
         <option value="$PROJECT_DIR$/templates/Ticketing/summary.html.twig" />
+        <option value="$PROJECT_DIR$/src/Service/CalculationDate.php" />
         <option value="$PROJECT_DIR$/src/Controller/TicketingController.php" />
       </list>
     </option>
@@ -220,6 +231,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,7 +283,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -313,17 +324,17 @@
       <workItem from="1544171749776" duration="13919000" />
       <workItem from="1544263292419" duration="3776000" />
       <workItem from="1544427240820" duration="11393000" />
+      <workItem from="1544602049341" duration="2391000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60937000" />
+    <option name="totallyTimeSpent" value="64282000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2907916" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2956381" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -335,7 +346,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32956153" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32956153" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -444,10 +455,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/InformationType.php">
+    <entry file="file://$PROJECT_DIR$/src/Form/BookingType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        <state relative-caret-position="194">
+          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20181211121633.php" />
+    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20181211124812.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-128" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20181211090107.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Booking.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+          <folding>
+            <element signature="e#30#78#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -458,67 +488,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/BookingType.php">
+    <entry file="file://$PROJECT_DIR$/src/Form/InformationType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20181211121633.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20181211124812.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/CalculationDate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20181211090107.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Booking.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1114">
-          <caret line="52" column="26" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
-          <folding>
-            <element signature="e#30#78#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Information.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        <state relative-caret-position="240">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/Ticketing/summary.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        <state relative-caret-position="294">
+          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Information.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="914">
+          <caret line="159" selection-start-line="159" selection-end-line="159" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/CalculationDate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
+        <state relative-caret-position="229">
+          <caret line="72" column="41" selection-start-line="72" selection-start-column="41" selection-end-line="72" selection-end-column="41" />
           <folding>
             <element signature="e#34#57#0#PHP" expanded="true" />
-            <element signature="e#1209#1243#1#PHP" expanded="true" />
-            <element signature="e#2093#2116#1#PHP" expanded="true" />
-            <element signature="e#2142#2182#0#PHP" expanded="true" />
-            <element signature="e#2892#2921#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

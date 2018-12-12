@@ -46,6 +46,16 @@ class Information
      */
     private $idbooking;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $age;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $price;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +129,30 @@ class Information
     public function setIdbooking(?Booking $idbooking): self
     {
         $this->idbooking = $idbooking;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): self
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

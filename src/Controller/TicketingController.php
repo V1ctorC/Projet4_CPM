@@ -43,7 +43,7 @@ class TicketingController extends AbstractController
      * @Route ("/contact_information")
      */
 
-    public function contactInformation(Request $request, Session $session)
+    public function contactInformation(Request $request, Session $session, CalculationDate $calculationDate)
     {
         $booking = $session->get('booking');
         $quantity = $booking->getQuantity();
@@ -64,7 +64,8 @@ class TicketingController extends AbstractController
             for ($i=0;$i<$quantity;$i++)
             {
                 $customer = $user[$i];
-
+                $customer->setAge($calculationDate->getAge($customer->getBirthdate()));
+                $customer->setPrice($calculationDate->priceAge($customer->getAge(), $customer->getReducedprice()));
                 $em->persist($customer);
                 $em->flush();
 
@@ -84,16 +85,16 @@ class TicketingController extends AbstractController
     public function summary(Session $session, CalculationDate $calculationDate)
     {
         $user = $session->get('user');
-
+/*
         foreach ($user as $customer)
         {
-            $anniversaire = $customer->getBirthdate();
-            $age = $calculationDate->getAge($anniversaire);
-            $price = $calculationDate->priceAge($age);
-            dump($age);
-            dump($price)
-        }
+            $birthday = $customer->getBirthdate();
+            $age = $calculationDate->getAge($birthday);
+            $agee[] = $age;
+            $price[] = $calculationDate->priceAge($age);
 
+        }
+*/
         /*$user = $session->get('user');
         $em = $this->getDoctrine()->getManager();
         $user = $this->getDoctrine()->getRepository(Information::class)->find($userID);
