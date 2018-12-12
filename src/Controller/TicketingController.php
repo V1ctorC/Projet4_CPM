@@ -9,6 +9,7 @@ use App\Form\InformationType;
 use App\Service\CalculationDate;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -111,5 +112,37 @@ class TicketingController extends AbstractController
 
 
         return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'sum'=>$sum, 'counter'=>$counter));
+    }
+
+    /**
+     * @Route ("/ajax")
+     */
+    public function ajaxDay(Request $request)
+    {
+        $post = $request->request->get('field');
+        $repository = $this->getDoctrine()->getRepository(Booking::class);
+        $ticketSoldDay = $repository->findBy(
+            ['bookingday' => $post]
+        );
+        $nbVisitors = 0;
+        foreach ($ticketSoldDay as $booking)
+        {
+            $isPaid = $booking->getPaid();
+            if ($isPaid == 0)
+            {
+                $visitor = $booking->getQuantity();
+                $nbVisitors = $nbVisitors + $visitor;
+            }
+        }
+
+        if ($nbVisitors < 1000)
+        {
+            return new Response('Ok');
+        }
+        else
+        {
+            throw new \Exception('Something went wrong!');
+        }
+
     }
 }

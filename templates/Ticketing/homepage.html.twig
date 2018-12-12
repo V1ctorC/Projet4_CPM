@@ -58,7 +58,7 @@
 
             <button type="button" class="btn btn-primary"><a href="{{ path('app_ticketing_contactinformation') }}" >Continuer la réservation</a></button>
         </div>-->
-
+            <p id="messageSold" style="display: none">Le nombre de places pour cette journée ont toutes été vendues</p>
             {{ form_start(form) }}
 
             {{ form_row(form.bookingday) }}
@@ -66,7 +66,7 @@
             <div id="halfDay" style="display: none"><p>Il est plus de 14h, donc vous pouvez seulement acheter des billets 1/2 today</p></div>
             {{ form_row(form.quantity) }}
 
-            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <button type="submit" class="btn btn-primary" id="submitBooking">Envoyer</button>
 
             {{ form_end(form) }}
 
@@ -74,15 +74,9 @@
     </div>
 
     <script>
+
+
 /*
-        var ticketSold = 1200;
-
-        if (ticketSold >= 1000)
-        {
-            todayticket = "\'+1d\'";
-        }
-
-
         var date = new Date();
 
         var UTChours = date.getUTCHours();
@@ -136,6 +130,25 @@
                 onSelect : function () {
                     var date = document.getElementById('booking_bookingday').value;
                     choiceTypeTicket(date);
+                    var field = date;
+                    var url = 'http://127.0.0.1:8000/ajax';
+                    $(document).ready(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: 'field='+field,
+                            success: function () {
+                                document.getElementById('submitBooking').style.display ="block";
+                                document.getElementById('messageSold').style.display="none";
+
+                            },
+                            error: function () {
+                                document.getElementById('submitBooking').style.display ="none";
+                                document.getElementById('messageSold').style.display="block";
+                            }
+                        })});
+
+
                 }
 
             });
@@ -173,8 +186,6 @@
             }
 
         }
-
-
 
     </script>
 
