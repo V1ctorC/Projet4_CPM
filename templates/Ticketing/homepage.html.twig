@@ -63,6 +63,7 @@
 
             {{ form_row(form.bookingday) }}
             {{ form_row(form.type) }}
+            <div id="halfDay" style="display: none"><p>Il est plus de 14h, donc vous pouvez seulement acheter des billets 1/2 today</p></div>
             {{ form_row(form.quantity) }}
 
             <button type="submit" class="btn btn-primary">Envoyer</button>
@@ -73,6 +74,13 @@
     </div>
 
     <script>
+/*
+        var ticketSold = 1200;
+
+        if (ticketSold >= 1000)
+        {
+            todayticket = "\'+1d\'";
+        }
 
 
         var date = new Date();
@@ -95,13 +103,13 @@
             todayticket = "\'+1d\'";
         }
 
-
+*/
         var holidays = ["12/25/2018", "05/01/2019", "11/01/2019", "12/25/2019", "05/01/2020", "11/01/2020", "12/25/2020"];
 
 
         $( function() {
             $( "#booking_bookingday" ).datepicker({
-                minDate : todayticket,
+                minDate : '0',
                 maxDate : '+1Y',
                 dateFormat : "dd/mm/yy",
                 dayNames: [ "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" ],
@@ -124,10 +132,50 @@
                     }
                     var display = [show,'',(show)?'':'Hors dimanche et jours fériés'];
                     return display;
+                },
+                onSelect : function () {
+                    var date = document.getElementById('booking_bookingday').value;
+                    choiceTypeTicket(date);
                 }
 
             });
         } );
+
+        function choiceTypeTicket(date)
+        {
+
+            var today = new Date();
+
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            var currentDate = dd + '/' + mm + '/' + yyyy;
+
+            var UTChours = today.getUTCHours();
+            var currentHour = UTChours + 1;
+
+            if ((date === currentDate) && (currentHour >= 14))
+            {
+                document.getElementById('booking_type_1').checked = true;
+                document.getElementById('booking_type').style.display = "none";
+                document.getElementById('halfDay').style.display = 'block';
+            }
+            else
+            {
+                document.getElementById('booking_type').style.display = 'block';
+                document.getElementById('halfDay').style.display = 'none';
+            }
+
+        }
+
+
+
     </script>
 
 
