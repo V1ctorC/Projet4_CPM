@@ -4,31 +4,6 @@
 
     <h1>Résumé de votre réservation</h1>
 
-    <table>
-        <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Date naissance</th>
-            <th>Pays</th>
-            <th>Age</th>
-            <th>Prix</th>
-        </tr>
-        {% for customer in user %}
-        <tr>
-            <td>{{ customer.lastname }}</td>
-            <td>{{ customer.firstname }}</td>
-            <td>{{ customer.birthdate }}</td>
-            <td>{{ customer.country }}</td>
-            <td>{{ customer.age }}</td>
-            <td>{{ customer.price }}</td>
-
-                </tr>
-            {% endfor %}
-
-
-
-    </table>
-
     <div class="jumbotron">
         <h2>Tableau récapitulatif</h2>
         <table class="table">
@@ -44,36 +19,29 @@
                 </tr>
             </thead>
             <tbody>
+                {% for customer in user %}
+                    {% set counter = counter + 1 %}
                 <tr>
-                    <td>1</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>01/01/1980</td>
-                    <td>France</td>
-                    <td>Non</td>
-                    <td>16€</td>
+                    <td>{{ counter }}</td>
+                    <td>{{ customer.lastname }}</td>
+                    <td>{{ customer.firstname }}</td>
+                    <td>{{ customer.birthdate }}</td>
+                    <td>{{ customer.country }}</td>
+                    {% if customer.reducedprice == 0 %}
+                        <td>Non</td>
+                    {% else %}
+                        <td>Oui</td>
+                    {% endif %}
+                    <td>{{ customer.price }}</td>
+
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>01/01/1980</td>
-                    <td>France</td>
-                    <td>Non</td>
-                    <td>16€</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Test</td>
-                    <td>Test</td>
-                    <td>01/01/1980</td>
-                    <td>France</td>
-                    <td>Non</td>
-                    <td>16€</td>
-                </tr>
+                {% endfor %}
+
             </tbody>
         </table>
     </div>
+
+    {{ sum }}
 
     <button type="button" class="btn btn-danger">Annuler la réservation</button>
     <button type="button" class="btn btn-primary">Procéder au paiement</button>

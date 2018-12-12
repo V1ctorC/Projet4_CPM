@@ -84,17 +84,19 @@ class TicketingController extends AbstractController
      */
     public function summary(Session $session, CalculationDate $calculationDate)
     {
+        $counter = 0;
         $user = $session->get('user');
-/*
+        $sum = 0;
+
         foreach ($user as $customer)
         {
-            $birthday = $customer->getBirthdate();
-            $age = $calculationDate->getAge($birthday);
-            $agee[] = $age;
-            $price[] = $calculationDate->priceAge($age);
+            $price = $customer->getPrice();
+            $sum = $sum + $price;
 
         }
-*/
+
+
+
         /*$user = $session->get('user');
         $em = $this->getDoctrine()->getManager();
         $user = $this->getDoctrine()->getRepository(Information::class)->find($userID);
@@ -106,6 +108,6 @@ class TicketingController extends AbstractController
 
 
 
-        return $this->render('Ticketing/summary.html.twig', array('user'=>$user));
+        return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'sum'=>$sum, 'counter'=>$counter));
     }
 }
