@@ -18,7 +18,7 @@ class TicketingController extends AbstractController
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="homepage")
      */
     public function homepage(Request $request, Session $session)
     {
@@ -85,7 +85,7 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/summary")
      */
-    public function summary(Session $session, CalculationDate $calculationDate)
+    public function summary(Session $session, CalculationDate $calculationDate, Request $request)
     {
         $counter = 0;
         $user = $session->get('user');
@@ -95,9 +95,7 @@ class TicketingController extends AbstractController
         {
             $price = $customer->getPrice();
             $sum = $sum + $price;
-
         }
-
 
 
         /*$user = $session->get('user');
@@ -112,6 +110,24 @@ class TicketingController extends AbstractController
 
 
         return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'sum'=>$sum, 'counter'=>$counter));
+    }
+
+    /**
+     * @Route ("/payment")
+     */
+    public function paymentAction(Request $request)
+    {
+        \Stripe\Stripe::setApiKey("sk_test_rAGQCR0jx66px1wmcyb3me6U");
+
+        $token = $request->request->get('stripeToken');
+        $charge = \Stripe\Charge::create([
+            'amount' => 999,
+            'currency' => 'usd',
+            'description' => 'Example charge',
+            'source' => $token,
+        ]);
+
+        return $this->redirectToRoute('homepage');
     }
 
     /**
