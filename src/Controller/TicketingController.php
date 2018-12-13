@@ -34,14 +34,14 @@ class TicketingController extends AbstractController
 
             $session->set('booking', $form->getData());
 
-            return $this->redirectToRoute('app_ticketing_contactinformation');
+            return $this->redirectToRoute('contactInfo');
         }
 
         return $this->render('Ticketing/homepage.html.twig', array('form'=>$form->createView()));
     }
 
     /**
-     * @Route ("/contact_information")
+     * @Route ("/contact_information", name="contactInfo")
      */
 
     public function contactInformation(Request $request, Session $session, CalculationDate $calculationDate)
@@ -75,7 +75,7 @@ class TicketingController extends AbstractController
             $em->flush();
             $session->set('user', $user);
 
-            return $this->redirectToRoute('app_ticketing_summary');
+            return $this->redirectToRoute('summary');
         }
 
         return $this->render('Ticketing/contactInformation.html.twig', array(
@@ -83,7 +83,7 @@ class TicketingController extends AbstractController
     }
 
     /**
-     * @Route ("/summary")
+     * @Route ("/summary", name="summary")
      */
     public function summary(Session $session, CalculationDate $calculationDate, Request $request)
     {
@@ -91,11 +91,17 @@ class TicketingController extends AbstractController
         $user = $session->get('user');
         $sum = 0;
 
+        $firstUser = $user[0];
+        $bookingId = $firstUser->getIdbooking()->getId();
+        $session->set('bookingId', $bookingId);
+
         foreach ($user as $customer)
         {
             $price = $customer->getPrice();
             $sum = $sum + $price;
         }
+
+        $session->set('sum', $sum);
 
 
         /*$user = $session->get('user');
@@ -113,19 +119,39 @@ class TicketingController extends AbstractController
     }
 
     /**
-     * @Route ("/payment")
+     * @Route ("/payment", name="payment")
      */
-    public function paymentAction(Request $request)
+    public function paymentAction(Request $request, Session $session)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $bookingId = $session->get('bookingId');
+        $booking = $em->getRepository(Booking::class)->find($bookingId);
+        $price = $session->get('sum') * 100;
+
+
         \Stripe\Stripe::setApiKey("sk_test_rAGQCR0jx66px1wmcyb3me6U");
 
         $token = $request->request->get('stripeToken');
-        $charge = \Stripe\Charge::create([
-            'amount' => 999,
-            'currency' => 'usd',
-            'description' => 'Example charge',
-            'source' => $token,
-        ]);
+
+        try
+        {
+            $charge = \Stripe\Charge::create([
+                'amount' => $price,
+                'currency' => 'eur',
+                'description' => 'Musée du Louvre',
+                'source' => $token,
+            ]);
+
+            $booking->setPaid(true);
+            $em->persist($booking);
+            $em->flush();
+
+        } catch (\Stripe\Error\Card $e) {
+
+            $this->redirectToRoute('summary');
+
+        }
 
         return $this->redirectToRoute('homepage');
     }

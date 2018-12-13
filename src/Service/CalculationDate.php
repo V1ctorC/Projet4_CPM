@@ -33,7 +33,7 @@ class CalculationDate
         {
             return $price = 10;
         }
-        if (($age < 12) && ($age > 4) )
+        if (($age < 12) && ($age >= 4) )
         {
             return $price = 8;
         }

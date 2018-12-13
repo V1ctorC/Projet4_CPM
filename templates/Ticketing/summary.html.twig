@@ -43,11 +43,11 @@
 
     <h2 style="text-align: center">Total : {{ sum }}€</h2>
 
-    <form action="{{ path('app_ticketing_payment') }}" method="POST">
+    <form action="{{ path('payment') }}" method="POST">
         <script
                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="pk_test_9y2iO8ZCIEg06ONKLxjJ9qvb"
-                data-amount="999"
+                data-amount="{{ sum * 100}}"
                 data-name="Demo Site"
                 data-description="Widget"
                 data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
