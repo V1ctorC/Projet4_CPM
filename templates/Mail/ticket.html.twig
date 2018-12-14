@@ -1,0 +1,17 @@
+{% extends 'baseMail.html.twig' %}
+
+{% block body %}
+
+    Numéro de réservation : {{ bookingNumber }} <br>
+
+    {% for customer in user %}
+
+        Nom : {{ customer.lastname }} <br />
+        Prénom : {{ customer.firstname }} <br />
+        <hr />
+
+    {% endfor %}
+
+    Prix total : {{ price }}€
+
+{% endblock %}

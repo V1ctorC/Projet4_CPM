@@ -12,10 +12,12 @@ namespace App\Service;
 class Mailer
 {
     protected $mailer;
+    protected $templating;
 
-    public function __construct(\Swift_Mailer $mailer)
+    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $templating)
     {
         $this->mailer = $mailer;
+        $this->templating = $templating;
     }
 
     public function sendMessage($to, $subject, $body)
@@ -29,10 +31,14 @@ class Mailer
         $this->mailer->send($mail);
     }
 
-    public function sendTicket()
+    public function sendTicket($user, $bookingNumber, $price)
     {
-        $subject = "Test envoie d'un mail";
-        $body = "Test du body";
+        $subject = "Votre billet pour le musée du Louvre";
+        $body = $this->templating->render('Mail/ticket.html.twig', array(
+            'user' => $user,
+            'bookingNumber' => $bookingNumber,
+            'price' => $price
+            ));
 
         $this->sendMessage('victor.du.77@hotmail.fr', $subject, $body);
     }
