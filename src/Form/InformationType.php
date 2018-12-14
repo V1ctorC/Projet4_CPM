@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Information;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,7 +21,7 @@ class InformationType extends AbstractType
                 'attr' => array('class' => 'information_birthdate')
             ))
             ->add('country', CountryType::class, ["preferred_choices" => array('FR')])
-            ->add('reducedprice')
+            ->add('reducedprice', CheckboxType::class)
         ;
     }
 
