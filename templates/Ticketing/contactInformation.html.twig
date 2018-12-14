@@ -8,9 +8,12 @@
 
     {{ form_start(form) }}
 
+    {{ form_row(form.0.lastname) }}
+
         <input type="submit">
 
     {{ form_end(form) }}
+    {% set counterForm = counterForm + 1 %}
 
 {% endfor %}
 

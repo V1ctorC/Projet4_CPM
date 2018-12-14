@@ -48,6 +48,8 @@ class TicketingController extends AbstractController
     {
         $booking = $session->get('booking');
         $quantity = $booking->getQuantity();
+        $ticketType = $booking->getType();
+        $counterForm = 0;
 
         for ($i = 0; $i < $quantity; $i++)
         {
@@ -57,7 +59,6 @@ class TicketingController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $form = $this->createForm(CollectionType::class, $user, ['entry_type' => InformationType::class]);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
@@ -68,7 +69,8 @@ class TicketingController extends AbstractController
             {
                 $customer = $user[$i];
                 $customer->setAge($calculationDate->getAge($customer->getBirthdate()));
-                $customer->setPrice($calculationDate->priceAge($customer->getAge(), $customer->getReducedprice()));
+                $priceDay = ($calculationDate->priceAge($customer->getAge(), $customer->getReducedprice()));
+                $customer->setPrice($calculationDate->priceTicketType($priceDay, $ticketType));
                 $customer->setIdbooking($booking);
                 $em->persist($customer);
             }
@@ -79,8 +81,10 @@ class TicketingController extends AbstractController
         }
 
         return $this->render('Ticketing/contactInformation.html.twig', array(
-            'form' => $form->createView()));
+            'form' => $form->createView(), 'counterForm' => $counterForm));
     }
+
+
 
     /**
      * @Route ("/summary", name="summary")
@@ -88,8 +92,9 @@ class TicketingController extends AbstractController
     public function summary(Session $session, CalculationDate $calculationDate, Request $request)
     {
         $counter = 0;
-        $user = $session->get('user');
         $sum = 0;
+        $user = $session->get('user');
+
 
         $firstUser = $user[0];
         $bookingId = $firstUser->getIdbooking()->getId();
@@ -102,17 +107,6 @@ class TicketingController extends AbstractController
         }
 
         $session->set('sum', $sum);
-
-
-        /*$user = $session->get('user');
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->getDoctrine()->getRepository(Information::class)->find($userID);
-        dump($userID);
-        /*$datenaissance = $user->getBirthdate();
-
-        $age = $calculationDate->getAge($datenaissance);
-        $price = $calculationDate->priceAge($age);*/
-
 
 
         return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'sum'=>$sum, 'counter'=>$counter));
@@ -170,7 +164,7 @@ class TicketingController extends AbstractController
         foreach ($ticketSoldDay as $booking)
         {
             $isPaid = $booking->getPaid();
-            if ($isPaid == 0)
+            if ($isPaid == 1)
             {
                 $visitor = $booking->getQuantity();
                 $nbVisitors = $nbVisitors + $visitor;

@@ -50,4 +50,14 @@ class CalculationDate
             return $price = 16;
         }
     }
+
+    public function priceTicketType($priceDay, $type)
+    {
+        if ($type == "H")
+        {
+            return $price = $priceDay/2;
+        }
+
+        return $priceDay;
+    }
 }
