@@ -4,6 +4,12 @@
 
     Numéro de réservation : {{ bookingNumber }} <br>
 
+    Ce mail fait office de billet pour le {{ bookingDay }} <br />
+
+    {% if bookingType == 'H' %}
+    /!\ Ce billet n'est valable qu'à partir de 14h.
+    {% endif %}
+
     {% for customer in user %}
 
         Nom : {{ customer.lastname }} <br />

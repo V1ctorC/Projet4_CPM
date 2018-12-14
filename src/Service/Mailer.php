@@ -31,15 +31,17 @@ class Mailer
         $this->mailer->send($mail);
     }
 
-    public function sendTicket($user, $bookingNumber, $price)
+    public function sendTicket($to, $user, $bookingNumber, $price, $bookingDay, $bookingType)
     {
         $subject = "Votre billet pour le musée du Louvre";
         $body = $this->templating->render('Mail/ticket.html.twig', array(
             'user' => $user,
             'bookingNumber' => $bookingNumber,
-            'price' => $price
+            'price' => $price,
+            'bookingDay' => $bookingDay,
+            'bookingType' => $bookingType
             ));
 
-        $this->sendMessage('victor.du.77@hotmail.fr', $subject, $body);
+        $this->sendMessage($to, $subject, $body);
     }
 }

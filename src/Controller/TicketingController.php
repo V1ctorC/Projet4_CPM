@@ -123,6 +123,8 @@ class TicketingController extends AbstractController
         $bookingId = $session->get('bookingId');
         $booking = $em->getRepository(Booking::class)->find($bookingId);
         $bookingNumber = $booking->getBookingnumber();
+        $bookingDay = $booking->getBookingday();
+        $bookingType = $booking->getType();
         $price = $session->get('sum');
         $sum = $price * 100;
 
@@ -130,7 +132,7 @@ class TicketingController extends AbstractController
         \Stripe\Stripe::setApiKey("sk_test_rAGQCR0jx66px1wmcyb3me6U");
 
         $token = $request->request->get('stripeToken');
-        $mail = $request->request->get('stripeEmail');
+        $to = $request->request->get('stripeEmail');
 
         try
         {
@@ -140,7 +142,7 @@ class TicketingController extends AbstractController
                 'description' => 'Musée du Louvre',
                 'source' => $token,
             ]);
-            $booking->setMail($mail);
+            $booking->setMail($to);
             $booking->setPaid(true);
             $em->persist($booking);
             $em->flush();
@@ -151,7 +153,7 @@ class TicketingController extends AbstractController
 
         }
         $user = $session->get('user');
-        $mailer->sendTicket($user, $bookingNumber, $price);
+        $mailer->sendTicket($to, $user, $bookingNumber, $price, $bookingDay, $bookingType);
 
         return $this->redirectToRoute('homepage');
     }
