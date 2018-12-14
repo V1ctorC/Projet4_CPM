@@ -7,6 +7,7 @@ use App\Entity\Information;
 use App\Form\BookingType;
 use App\Form\InformationType;
 use App\Service\CalculationDate;
+use App\Service\Mailer;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -115,7 +116,7 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/payment", name="payment")
      */
-    public function paymentAction(Request $request, Session $session)
+    public function paymentAction(Request $request, Session $session, Mailer $mailer)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -147,6 +148,8 @@ class TicketingController extends AbstractController
             return $this->redirectToRoute('summary');
 
         }
+
+        $mailer->sendTicket();
 
         return $this->redirectToRoute('homepage');
     }
