@@ -21,7 +21,13 @@ class InformationType extends AbstractType
                 'attr' => array('class' => 'information_birthdate')
             ))
             ->add('country', CountryType::class, ["preferred_choices" => array('FR')])
-            ->add('reducedprice', CheckboxType::class)
+            ->add('reducedprice', CheckboxType::class, array(
+                'label' => ('Tarif réduit (Un justicatif devra être présenté lors de l’entrée)'),
+                'required' => false,
+                'attr' => array(
+                    'class' => 'information_reduced',
+                )
+            ))
         ;
     }
 

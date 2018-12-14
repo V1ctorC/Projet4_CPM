@@ -127,6 +127,7 @@ class TicketingController extends AbstractController
         \Stripe\Stripe::setApiKey("sk_test_rAGQCR0jx66px1wmcyb3me6U");
 
         $token = $request->request->get('stripeToken');
+        $mail = $request->request->get('stripeEmail');
 
         try
         {
@@ -136,14 +137,14 @@ class TicketingController extends AbstractController
                 'description' => 'Musée du Louvre',
                 'source' => $token,
             ]);
-
+            $booking->setMail($mail);
             $booking->setPaid(true);
             $em->persist($booking);
             $em->flush();
 
         } catch (\Stripe\Error\Card $e) {
 
-            $this->redirectToRoute('summary');
+            return $this->redirectToRoute('summary');
 
         }
 

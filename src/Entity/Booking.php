@@ -48,6 +48,11 @@ class Booking
      */
     private $information;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $mail;
+
     public function __construct()
     {
         $this->setPaid(0);
@@ -146,6 +151,18 @@ class Booking
                 $information->setIdbooking(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(string $mail): self
+    {
+        $this->mail = $mail;
 
         return $this;
     }
