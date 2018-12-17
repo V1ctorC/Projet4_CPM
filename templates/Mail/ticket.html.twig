@@ -10,21 +10,21 @@
             margin: auto;
         }
 
-        #header{
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
         #logoLouvre
         {
-            width: 20%;
-            min-width: 100px;
+            width: 50%;
+            height: auto;
+            margin: auto;
+        }
+
+        #header{
+            display: flex;
+            flex-direction: column;
         }
 
         #resaNumber
         {
-            margin: auto;
+            margin: 15px auto;
         }
 
         p{
@@ -62,9 +62,9 @@
 {% block body %}
 
     <div id="header">
-        <img src="{{ asset('Images/Logo Louvre.jpg') }}" id="logoLouvre">
+        <img src="https://i0.wp.com/www.grapheine.com/wp-content/uploads/2016/04/provisoire-louvre-logo.jpg?quality=90&strip=all&ssl=1" id="logoLouvre">
         <div id="resaNumber">
-            Numéro de réservation : <u>{{ booking.bookingnumber }}</u>
+            Numéro de réservation : <u>{{  booking.bookingnumber }}</u>
         </div>
     </div>
 
@@ -93,7 +93,7 @@
                 <td>{{ customer.firstname }}</td>
                 <td>{{ customer.birthdate }}</td>
                 <td>{% if customer.reducedprice == 1 %}Oui{% else %}Non{% endif %}</td>
-                <td>{{ customer.price }}</td>
+                <td>{{ customer.price }}€</td>
             </tr>
             {% endfor %}
         </table>

@@ -150,7 +150,7 @@ class TicketingController extends AbstractController
 
         }
         $user = $session->get('user');
-        $mailer->sendTicket($to, $user, $sum, $booking, $logo);
+        $mailer->sendTicket($to, $user, $sum, $booking);
 
         return $this->redirectToRoute('homepage');
     }
@@ -185,18 +185,5 @@ class TicketingController extends AbstractController
             throw new \Exception('Something went wrong!');
         }
 
-    }
-
-
-
-
-
-
-    /**
-     *@Route ("/test/mail")
-     */
-    public function testMailAction()
-    {
-        return $this->render('Mail/ticket.html.twig');
     }
 }
