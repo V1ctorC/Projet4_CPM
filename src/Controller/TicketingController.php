@@ -122,11 +122,8 @@ class TicketingController extends AbstractController
 
         $bookingId = $session->get('bookingId');
         $booking = $em->getRepository(Booking::class)->find($bookingId);
-        $bookingNumber = $booking->getBookingnumber();
-        $bookingDay = $booking->getBookingday();
-        $bookingType = $booking->getType();
-        $price = $session->get('sum');
-        $sum = $price * 100;
+        $sum = $session->get('sum');
+        $sumStripe = $sum * 100;
 
 
         \Stripe\Stripe::setApiKey("sk_test_rAGQCR0jx66px1wmcyb3me6U");
@@ -137,7 +134,7 @@ class TicketingController extends AbstractController
         try
         {
             $charge = \Stripe\Charge::create([
-                'amount' => $sum,
+                'amount' => $sumStripe,
                 'currency' => 'eur',
                 'description' => 'Musée du Louvre',
                 'source' => $token,
@@ -153,7 +150,7 @@ class TicketingController extends AbstractController
 
         }
         $user = $session->get('user');
-        $mailer->sendTicket($to, $user, $bookingNumber, $price, $bookingDay, $bookingType);
+        $mailer->sendTicket($to, $user, $sum, $booking, $logo);
 
         return $this->redirectToRoute('homepage');
     }
@@ -188,5 +185,18 @@ class TicketingController extends AbstractController
             throw new \Exception('Something went wrong!');
         }
 
+    }
+
+
+
+
+
+
+    /**
+     *@Route ("/test/mail")
+     */
+    public function testMailAction()
+    {
+        return $this->render('Mail/ticket.html.twig');
     }
 }

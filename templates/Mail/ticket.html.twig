@@ -1,23 +1,106 @@
 {% extends 'baseMail.html.twig' %}
 
+{% block style %}
+
+    <style>
+
+        body
+        {
+            width: 80%;
+            margin: auto;
+        }
+
+        #header{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        #logoLouvre
+        {
+            width: 20%;
+            min-width: 100px;
+        }
+
+        #resaNumber
+        {
+            margin: auto;
+        }
+
+        p{
+            font-size: 1.2em;
+        }
+
+        #listPersons {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8em;
+        }
+
+        #listPersons th, #listPersons td {
+            border: 1px solid #DDDDDD;
+            padding: 5px;
+        }
+
+        #listPersons th
+        {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: left;
+            background-color: #9FA89D;
+            color: white;
+        }
+
+        #sum
+        {
+            text-align: right;
+        }
+    </style>
+
+{% endblock %}
+
 {% block body %}
 
-    Numéro de réservation : {{ bookingNumber }} <br>
+    <div id="header">
+        <img src="{{ asset('Images/Logo Louvre.jpg') }}" id="logoLouvre">
+        <div id="resaNumber">
+            Numéro de réservation : <u>{{ booking.bookingnumber }}</u>
+        </div>
+    </div>
 
-    Ce mail fait office de billet pour le {{ bookingDay }} <br />
 
-    {% if bookingType == 'H' %}
-    /!\ Ce billet n'est valable qu'à partir de 14h.
-    {% endif %}
+    <h1>Votre réservation pour le musée du louvre</h1>
 
-    {% for customer in user %}
+    <div id="content">
+        <p>Bonjour, </p>
+        <p>Suite à votre achat sur notre billetterie en ligne, nous avons le plaisir de vous informer que
+        votre réservation est effective.</p>
+        <p>Votre réservation est valable pour une visite du musée le <strong>{{ booking.bookingday }}</strong> à partir de
+            <strong>{%  if booking.type == 'H'%}14h00{% else%}10h00{% endif%}</strong></p>
+        <br />
+        <p>Cette réservation n'est valable que pour la ou les personne(s) suivante(s) :</p>
+        <table id="listPersons">
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Tarif réduit</th>
+                <th>Prix</th>
+            </tr>
+            {% for customer in user %}
+            <tr>
+                <td>{{ customer.lastname }}</td>
+                <td>{{ customer.firstname }}</td>
+                <td>{{ customer.birthdate }}</td>
+                <td>{% if customer.reducedprice == 1 %}Oui{% else %}Non{% endif %}</td>
+                <td>{{ customer.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
-        Nom : {{ customer.lastname }} <br />
-        Prénom : {{ customer.firstname }} <br />
-        <hr />
+    <p id="sum">Prix total : {{ sum }}€</p>
 
-    {% endfor %}
 
-    Prix total : {{ price }}€
 
 {% endblock %}

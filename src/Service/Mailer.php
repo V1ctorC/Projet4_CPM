@@ -23,7 +23,7 @@ class Mailer
     public function sendMessage($to, $subject, $body)
     {
         $mail = (new \Swift_Message())
-            ->setFrom('test.vetudes@gmail.com')
+            ->setFrom(['test.vetudes@gmail.com' => 'Musée du Louvre'])
             ->setTo($to)
             ->setSubject($subject)
             ->setBody($body, 'text/html');
@@ -31,15 +31,14 @@ class Mailer
         $this->mailer->send($mail);
     }
 
-    public function sendTicket($to, $user, $bookingNumber, $price, $bookingDay, $bookingType)
+    public function sendTicket($to, $user, $sum, $booking, $logo)
     {
         $subject = "Votre billet pour le musée du Louvre";
         $body = $this->templating->render('Mail/ticket.html.twig', array(
             'user' => $user,
-            'bookingNumber' => $bookingNumber,
-            'price' => $price,
-            'bookingDay' => $bookingDay,
-            'bookingType' => $bookingType
+            'sum' => $sum,
+            'booking' => $booking,
+            'logo' => $logo
             ));
 
         $this->sendMessage($to, $subject, $body);

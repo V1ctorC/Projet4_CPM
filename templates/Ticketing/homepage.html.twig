@@ -7,14 +7,17 @@
         <p>Achetez dès maintenant vos billets pour éviter la file d'attente !</p>
     </div>
 
-    <button type="button" class="btn btn-primary">Acheter vos billets</button>
+    <a class="btn btn-primary" href="#ticketing">Acheter vos billets</a>
+
+    <img src="{{ asset('Images/Louvre.jpg') }}">
+
 
     <div id="pricing">
         <h2 id="princingTitle">Les tarifs</h2>
         <div class="jumbotron" id="listPrice">
             <ul>
                 <li>Tarif normal (à partir de 12 ans) : 16€</li>
-                <li>Tarif enfant (à partir de 4 ans et jusqu'à 12 ans : 8€</li>
+                <li>Tarif enfant (à partir de 4 ans et jusqu'à 12 ans) : 8€</li>
                 <li>Tarif senior (à partir de 60 ans) : 12€</li>
                 <li>Tarif réduit (Étudiant, employé du musée, d'un ministère de la Culture, militaire ...) : 10€</li>
             </ul>
@@ -136,6 +139,16 @@
             }
 
         }
+
+        $(document).ready(function() {
+            $('a[href^="#"]').click(function (evt) {
+                evt.preventDefault();
+                var target = $(this).attr('href');
+                $('html, body')
+                    .stop()
+                    .animate({scrollTop: $(target).offset().top}, 1000);
+            });
+        });
 
     </script>
 
