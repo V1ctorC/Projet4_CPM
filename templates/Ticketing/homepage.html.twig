@@ -2,14 +2,19 @@
 
 {% block body %}
 
-    <div id="welcomeMessage">
-        <h1>Billeterie du musée du Louvre</h1>
-        <p>Achetez dès maintenant vos billets pour éviter la file d'attente !</p>
+    <img src="{{ asset('Images/logo_louvre.jpg') }}" alt="logo Louvre" id="logoLouvre">
+
+    <div id="textHome">
+        <div id="welcomeMessage">
+            <h1>Billeterie du musée du Louvre</h1>
+            <p>Achetez dès maintenant vos billets pour éviter la file d'attente !</p>
+            <a class="btn btn-primary" href="#ticketing">Acheter vos billets</a>
+        </div>
+        <div id="presentationText">
+            <p>Vous avez la possibilité d'acheter vos billets directement sur ce site de manière sécurisé</p>
+        </div>
     </div>
 
-    <a class="btn btn-primary" href="#ticketing">Acheter vos billets</a>
-
-    <img src="{{ asset('Images/Louvre.jpg') }}">
 
 
     <div id="pricing">
