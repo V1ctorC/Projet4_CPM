@@ -48,7 +48,7 @@
     <h2 style="text-align: center">Total : {{ sum }}€</h2>
     <div id="cancelAndPaiement">
         <div id="cancelButton">
-            <button type="button" class="btn btn-danger">Annuler la réservation</button>
+            <a href="{{ path('cancel') }}"><button type="button" class="btn btn-danger">Annuler la réservation</button></a>
         </div>
         <div id="paiementButton">
             <form action="{{ path('payment') }}" method="POST">

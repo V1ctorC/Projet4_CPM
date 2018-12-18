@@ -186,4 +186,14 @@ class TicketingController extends AbstractController
         }
 
     }
+
+    /**
+     * @Route ("/cancel", name="cancel")
+     */
+    public function cancelAction(Session $session)
+    {
+        $session->invalidate();
+
+        return $this->redirectToRoute('homepage');
+    }
 }
