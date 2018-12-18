@@ -4,22 +4,30 @@
 
     <img src="{{ asset('Images/logo_louvre.jpg') }}" alt="logo Louvre" id="logoLouvre">
 
-    <div id="textHome">
-        <div id="welcomeMessage">
-            <h1>Billeterie du musée du Louvre</h1>
-            <p>Achetez dès maintenant vos billets pour éviter la file d'attente !</p>
-            <a class="btn btn-primary" href="#ticketing">Acheter vos billets</a>
-        </div>
-        <div id="presentationText">
-            <p>Vous avez la possibilité d'acheter vos billets directement sur ce site de manière sécurisé</p>
-        </div>
+    <div id="welcomeMessage">
+        <h1>Billeterie du musée du Louvre</h1>
+        <p>Achetez dès maintenant vos billets pour éviter la file d'attente !</p>
+        <a class="btn btn-primary" href="#ticketing">Acheter vos billets</a>
     </div>
 
-
+    <div id="presentationText">
+        <h2>Un achat simple</h2>
+        <p>Vous avez la possibilité d'acheter vos billets directement sur ce site de manière sécurisé</p>
+        <p>Pour cela, rien de plus simple : </p>
+        <ul>
+            <li>Choisissez la date qui vous convient</li>
+            <li>Le type de billet et le nombre</li>
+            <li>Inscrivez le nom, prénom et la date d'anniversaire de chacune des personnes</li>
+            <li>Procédez au paiement</li>
+            <li>Et c'est tout !</li>
+        </ul>
+        <p>Vous recevrez ensuite par mail le ticket qu'il vous faudra présenter pour pouvoir accéder au musée</p>
+    </div>
 
     <div id="pricing">
-        <h2 id="princingTitle">Les tarifs</h2>
-        <div class="jumbotron" id="listPrice">
+        <h2>Les tarifs</h2>
+        <p><u>Pour une journée :</u></p>
+        <div id="listPrice">
             <ul>
                 <li>Tarif normal (à partir de 12 ans) : 16€</li>
                 <li>Tarif enfant (à partir de 4 ans et jusqu'à 12 ans) : 8€</li>
@@ -27,19 +35,37 @@
                 <li>Tarif réduit (Étudiant, employé du musée, d'un ministère de la Culture, militaire ...) : 10€</li>
             </ul>
         </div>
+        <p><u>Pour une demi-journée :</u></p>
+        <div id="listPriceHalf">
+            <ul>
+                <li>Tarif normal (à partir de 12 ans) : 8€</li>
+                <li>Tarif enfant (à partir de 4 ans et jusqu'à 12 ans) : 4€</li>
+                <li>Tarif senior (à partir de 60 ans) : 6€</li>
+                <li>Tarif réduit (Étudiant, employé du musée, d'un ministère de la Culture, militaire ...) : 5€</li>
+            </ul>
+        </div>
+        <em>NB : Pour les enfants de moins de 4 ans, l'accès au musée est gratuit.</em>
     </div>
+
+    <div id="openDays">
+        <h2>Les horaires d'ouvertures</h2>
+        <p>Les horaires pour accéder au musée </p>
+        <ul id="listHours">
+            <li>Lundi : 10h - 18h</li>
+            <li>Mardi : 10h - 18h</li>
+            <li>Mercredi : 10h - 18h</li>
+            <li>Jeudi : 10h - 18h</li>
+            <li>Vendredi : 10h - 18h</li>
+            <li>Samedi : 10h - 18h</li>
+            <li>Dimanche : Fermé</li>
+        </ul>
+        <em>Le musée est fermé le 1er mai, le 1er novembre et le 25 décembre.</em>
+    </div>
+
+
     <div id="ticketing">
         <h2 id="ticketingTitle">Billetterie</h2>
-        <div id="calendar">
-            <!--<input type="text" placeholder="Date de la visite" id"datepicker" readonly="readonly">-->
-        </div>
-        <!--<div id="ticketType">
-            <button type="button" class="btn btn-dark">1/2 journée</button>
-            <button type="button" class="btn btn-dark">1 journée</button>
-        </div>-->
-        <div>
-
-            <p id="messageSold" style="display: none">Le nombre de places pour cette journée ont toutes été vendues</p>
+            <p id="messageSold" class="alert alert-danger">Le nombre de places pour cette journée ont toutes été vendues</p>
             {{ form_start(form) }}
 
             {{ form_row(form.bookingday) }}
