@@ -73,6 +73,11 @@ body
     display: none;
 }
 
+#halfDay
+{
+    display: none;
+}
+
 #submitBooking
 {
     display: block;
