@@ -78,3 +78,29 @@ body
     display: block;
     margin: auto;
 }
+
+/*
+
+contactInformation.html.twig
+
+ */
+
+#yourDetails
+{
+    text-align: center;
+    margin: 20px auto 20px auto;
+}
+
+.listInformationForm
+{
+    width: 80%;
+    margin: 5% auto 5% auto;
+    padding: 15px;
+    background-color: white;
+}
+
+#submitInformation
+{
+    display: block;
+    margin: auto;
+}

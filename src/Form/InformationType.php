@@ -15,12 +15,22 @@ class InformationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class)
-            ->add('lastname', TextType::class)
-            ->add('birthdate', TextType::class, array(
-                'attr' => array('class' => 'information_birthdate')
+            ->add('firstname', TextType::class, array(
+                'label' => 'Prénom'
             ))
-            ->add('country', CountryType::class, ["preferred_choices" => array('FR')])
+            ->add('lastname', TextType::class, array(
+                'label' => 'Nom'
+            ))
+            ->add('birthdate', TextType::class, array(
+                'label' => 'Date de naissance',
+                'attr' => array(
+                    'class' => 'information_birthdate')
+            ))
+            ->add('country', CountryType::class, array(
+                'label' => 'Pays',
+                "preferred_choices" => array(
+                    'FR')
+            ))
             ->add('reducedprice', CheckboxType::class, array(
                 'label' => ('Tarif réduit (Un justicatif devra être présenté lors de l’entrée)'),
                 'required' => false,

@@ -2,61 +2,23 @@
 
 {% block body %}
 
-    <h1>Vos coordonnées</h1>
+    <h1 id="yourDetails">Vos coordonnées</h1>
 
 {% for formType in form %}
 
+    <div class="listInformationForm">
     {{ form_start(form) }}
 
-    {{ form_row(form.0.lastname) }}
+    {# form_row(form.0.lastname) #}
 
-        <input type="submit">
+        <input type="submit" class="btn btn-dark" id="submitInformation">
 
     {{ form_end(form) }}
-    {% set counterForm = counterForm + 1 %}
+    {# set counterForm = counterForm + 1 #}
+    </div>
 
 {% endfor %}
 
-    <div class="jumbotron">
-        <p>Billet n° 1</p>
-        <input type="text" placeholder="Nom">
-        <input type="text" placeholder="Prénom">
-        <input type="date" placeholder="Date de naissance">
-        <input type="text" placeholder="Pays">
-        <div id="reducedPrice">
-            <input type="checkbox" name="reduced" id="reduced">
-            <label for="reduced">Tarif réduit ?</label>
-        </div>
-
-    </div>
-
-    <div class="jumbotron">
-        <p>Billet n° 2</p>
-        <input type="text" placeholder="Nom">
-        <input type="text" placeholder="Prénom">
-        <input type="date" placeholder="Date de naissance">
-        <input type="text" placeholder="Pays">
-        <div id="reducedPrice">
-            <input type="checkbox" name="reduced" id="reduced">
-            <label for="reduced">Tarif réduit ?</label>
-        </div>
-
-    </div>
-
-    <div class="jumbotron">
-        <p>Billet n° 3</p>
-        <input type="text" placeholder="Nom">
-        <input type="text" placeholder="Prénom">
-        <input type="date" placeholder="Date de naissance">
-        <input type="text" placeholder="Pays">
-        <div id="reducedPrice">
-            <input type="checkbox" name="reduced" id="reduced">
-            <label for="reduced">Tarif réduit ?</label>
-        </div>
-
-    </div>
-
-    <button type="button" class="btn btn-primary"><a href="#">Résumé de vos billets</a></button>
 
     <script>
         $( function () {
