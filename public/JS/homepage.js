@@ -72,7 +72,7 @@ function choiceTypeTicket(date)
     var UTChours = today.getUTCHours();
     var currentHour = UTChours + 1;
 
-    if ((date === currentDate) && (currentHour >= 13))
+    if ((date === currentDate) && (currentHour >= 14))
     {
         document.getElementById('booking_type_1').checked = true;
         document.getElementById('booking_type').style.display = "none";

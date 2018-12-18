@@ -57,14 +57,11 @@ class TicketingController extends AbstractController
             $user[$i] = new Information();
         }
 
-        $em = $this->getDoctrine()->getManager();
-
         $form = $this->createForm(CollectionType::class, $user, ['entry_type' => InformationType::class]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $em->persist($booking);
 
             for ($i=0;$i<$quantity;$i++)
             {
@@ -73,9 +70,7 @@ class TicketingController extends AbstractController
                 $priceDay = ($calculationDate->priceAge($customer->getAge(), $customer->getReducedprice()));
                 $customer->setPrice($calculationDate->priceTicketType($priceDay, $ticketType));
                 $customer->setIdbooking($booking);
-                $em->persist($customer);
             }
-            $em->flush();
             $session->set('user', $user);
 
             return $this->redirectToRoute('summary');
@@ -86,7 +81,6 @@ class TicketingController extends AbstractController
     }
 
 
-
     /**
      * @Route ("/summary", name="summary")
      */
@@ -95,11 +89,6 @@ class TicketingController extends AbstractController
         $counter = 0;
         $sum = 0;
         $user = $session->get('user');
-
-
-        $firstUser = $user[0];
-        $bookingId = $firstUser->getIdbooking()->getId();
-        $session->set('bookingId', $bookingId);
 
         foreach ($user as $customer)
         {
@@ -113,6 +102,7 @@ class TicketingController extends AbstractController
         return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'sum'=>$sum, 'counter'=>$counter));
     }
 
+
     /**
      * @Route ("/payment", name="payment")
      */
@@ -120,8 +110,8 @@ class TicketingController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $bookingId = $session->get('bookingId');
-        $booking = $em->getRepository(Booking::class)->find($bookingId);
+        $booking = $session->get('booking');
+        $user = $session->get('user');
         $sum = $session->get('sum');
         $sumStripe = $sum * 100;
 
@@ -139,9 +129,15 @@ class TicketingController extends AbstractController
                 'description' => 'Musée du Louvre',
                 'source' => $token,
             ]);
+            dump($user);
             $booking->setMail($to);
             $booking->setPaid(true);
             $em->persist($booking);
+            for ($i=0; $i<$booking->getQuantity();$i++)
+            {
+                $customer = $user[$i];
+                $em->persist($customer);
+            }
             $em->flush();
 
         } catch (\Stripe\Error\Card $e) {
@@ -152,8 +148,9 @@ class TicketingController extends AbstractController
         $user = $session->get('user');
         $mailer->sendTicket($to, $user, $sum, $booking);
 
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('erase');
     }
+
 
     /**
      * @Route ("/ajax")
@@ -188,7 +185,7 @@ class TicketingController extends AbstractController
     }
 
     /**
-     * @Route ("/cancel", name="cancel")
+     * @Route ("/erase", name="erase")
      */
     public function cancelAction(Session $session)
     {
