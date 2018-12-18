@@ -2,12 +2,14 @@
 
 {% block body %}
 
-    <h1>Résumé de votre réservation</h1>
+    <h1 class="titleCenter">Résumé de votre réservation</h1>
 
-    <div class="jumbotron">
+    <div id="tableTicket">
         <h2>Tableau récapitulatif</h2>
-        <table class="table">
-            <thead>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
                 <tr>
                     <th scope="col">Billet n°</th>
                     <th>Nom</th>
@@ -17,46 +19,54 @@
                     <th>Tarif réduit ?</th>
                     <th>Prix</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 {% for customer in user %}
                     {% set counter = counter + 1 %}
-                <tr>
-                    <td>{{ counter }}</td>
-                    <td>{{ customer.lastname }}</td>
-                    <td>{{ customer.firstname }}</td>
-                    <td>{{ customer.birthdate }}</td>
-                    <td>{{ customer.country }}</td>
-                    {% if customer.reducedprice == 0 %}
-                        <td>Non</td>
-                    {% else %}
-                        <td>Oui</td>
-                    {% endif %}
-                    <td>{{ customer.price }}</td>
+                    <tr>
+                        <th scope="row">{{ counter }}</th>
+                        <td>{{ customer.lastname }}</td>
+                        <td>{{ customer.firstname }}</td>
+                        <td>{{ customer.birthdate }}</td>
+                        <td>{{ customer.country }}</td>
+                        {% if customer.reducedprice == 0 %}
+                            <td>Non</td>
+                        {% else %}
+                            <td>Oui</td>
+                        {% endif %}
+                        <td>{{ customer.price }}€</td>
 
-                </tr>
+                    </tr>
                 {% endfor %}
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
     <h2 style="text-align: center">Total : {{ sum }}€</h2>
-
-    <form action="{{ path('payment') }}" method="POST">
-        <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_9y2iO8ZCIEg06ONKLxjJ9qvb"
-                data-amount="{{ sum * 100}}"
-                data-name="Demo Site"
-                data-description="Widget"
-                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                data-locale="auto"
-                data-currency="eur">
-        </script>
-    </form>
-    <button type="button" class="btn btn-danger">Annuler la réservation</button>
-    <button type="button" class="btn btn-primary">Procéder au paiement</button>
+    <div id="cancelAndPaiement">
+        <div id="cancelButton">
+            <button type="button" class="btn btn-danger">Annuler la réservation</button>
+        </div>
+        <div id="paiementButton">
+            <form action="{{ path('payment') }}" method="POST">
+                <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_9y2iO8ZCIEg06ONKLxjJ9qvb"
+                        data-amount="{{ sum * 100}}"
+                        data-name="Musée du Louvre"
+                        data-description="Billets pour le musée"
+                        data-image="{{ asset('Images/Louvre.jpg') }}"
+                        data-locale="auto"
+                        data-label="Procéder au paiement"
+                        data-allow-remember-me="false"
+                        data-currency="eur">
+                </script>
+            </form>
+        </div>
+    </div>
 
 
 {% endblock %}
