@@ -132,3 +132,15 @@ summary.html.twig
     flex-direction: row;
     justify-content: space-between;
 }
+
+/**
+
+errorDay.html.twig
+
+ */
+
+.blockError
+{
+    margin-top: 50vh;
+    transform: translateY(-50%);
+}

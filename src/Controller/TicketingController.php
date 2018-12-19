@@ -24,8 +24,23 @@ class TicketingController extends AbstractController
     public function homepage(Request $request, Session $session)
     {
         $booking = new Booking();
+        $em = $this->getDoctrine()->getManager();
+        $quantityOldBooking = 0;
+
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
+
+
+        $listBooking = $em->getRepository(Booking::class)->findBy(array('bookingday' => $booking->getBookingday()));
+        foreach ($listBooking as $oldBooking)
+        {
+            $quantityOldBooking = $quantityOldBooking + $oldBooking->getQuantity();
+        }
+        if ($quantityOldBooking >= 1000)
+        {
+            return $this->redirectToRoute('errorDay');
+        }
+
 
         if ($form->isSubmitted() && $form->isValid())
         {
@@ -41,10 +56,10 @@ class TicketingController extends AbstractController
         return $this->render('Ticketing/homepage.html.twig', array('form'=>$form->createView()));
     }
 
+
     /**
      * @Route ("/contact_information", name="contactInfo")
      */
-
     public function contactInformation(Request $request, Session $session, CalculationDate $calculationDate)
     {
         $booking = $session->get('booking');
@@ -192,5 +207,13 @@ class TicketingController extends AbstractController
         $session->invalidate();
 
         return $this->redirectToRoute('homepage');
+    }
+
+    /**
+     * @Route ("/errorDay", name="errorDay")
+     */
+    public function error()
+    {
+        return $this->render('Error/errorDay.html.twig');
     }
 }

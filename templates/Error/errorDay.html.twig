@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+
+<meta http-equiv="Refresh" content="5; url={{ absolute_url(path('homepage')) }}">
+
+{% endblock %}
+
+{% block body %}
+<div class="blockError">
+    <div class="jumbotron">
+        <h1>Nombre de visiteurs maximum atteint pour ce jour !</h1>
+        <p>Nous vous invitons à sélectionner une autre journée</p>
+    </div>
+<div>
+{% endblock %}
