@@ -12,19 +12,42 @@
 
     <h1 class="titleCenter">Vos coordonnées</h1>
 
-{% for formType in form %}
+    {% set ticketNumber = 1 %}
 
     <div class="listInformationForm">
-    {{ form_start(form) }}
 
-    {# form_row(form.0.lastname) #}
+        {{ form_start(form) }}
+
+        {% for infos in form %}
+
+                {% if infos.children != null %}
+
+                    <div class="eachForm">
+
+                        <p class="ticketNumber">Billet n°{{ ticketNumber }}</p>
+
+                        {% for field in infos.children %}
+
+                            {{ form_row(field.parent.children.firstname) }}
+                            {{ form_row(field.parent.children.lastname) }}
+                            {{ form_row(field.parent.children.birthdate) }}
+                            {{ form_row(field.parent.children.country) }}
+                            {{ form_row(field.parent.children.reducedprice) }}
+
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+            {%  set ticketNumber = ticketNumber + 1 %}
+
+        {% endfor %}
 
         <input type="submit" class="btn btn-dark" id="submitInformation">
 
-    {{ form_end(form) }}
-    {# set counterForm = counterForm + 1 #}
-    </div>
+        {{ form_end(form) }}
 
-{% endfor %}
+    </div>
 
 {% endblock %}

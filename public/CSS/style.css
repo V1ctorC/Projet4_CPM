@@ -96,12 +96,24 @@ contactInformation.html.twig
     margin: 20px auto 20px auto;
 }
 
+.ticketNumber
+{
+    font-size: 2em;
+    font-weight: bold;
+}
+
 .listInformationForm
 {
     width: 80%;
     margin: 5% auto 5% auto;
     padding: 15px;
     background-color: white;
+}
+
+.eachForm
+{
+    width: 90%;
+    margin: 20px auto 50px auto;
 }
 
 #submitInformation
