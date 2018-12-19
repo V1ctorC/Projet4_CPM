@@ -28,7 +28,7 @@ class Information
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime", length=255)
      * @Assert\NotBlank
      */
     private $birthdate;
@@ -83,18 +83,6 @@ class Information
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getBirthdate(): ?string
-    {
-        return $this->birthdate;
-    }
-
-    public function setBirthdate(string $birthdate): self
-    {
-        $this->birthdate = $birthdate;
 
         return $this;
     }
@@ -155,6 +143,18 @@ class Information
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getBirthdate(): ?\DateTimeInterface
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(\DateTimeInterface $birthdate): self
+    {
+        $this->birthdate = $birthdate;
 
         return $this;
     }

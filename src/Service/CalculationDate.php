@@ -13,18 +13,11 @@ class CalculationDate
 {
     public function getAge($birthdate)
     {
-        $am = explode('/', $birthdate);
-        $an = explode('/', date('d/m/Y'));
+        $datetime1 = $birthdate;
+        $datetime2 = new \DateTime('now');
+        $interval = $datetime1->diff($datetime2);
 
-        if(($am[1] < $an[1]) || (($am[1] == $an[1]) && ($am[0] <= $an[0])))
-        {
-            return $an[2] - $am[2];
-
-        } else {
-
-            return $an[2] - $am[2] - 1;
-        }
-
+        return $interval->format('%y');
     }
 
     public function priceAge($age, $reduced)

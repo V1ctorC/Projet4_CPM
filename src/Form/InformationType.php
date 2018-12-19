@@ -6,6 +6,7 @@ use App\Entity\Information;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,8 +22,11 @@ class InformationType extends AbstractType
             ->add('lastname', TextType::class, array(
                 'label' => 'Nom'
             ))
-            ->add('birthdate', TextType::class, array(
+            ->add('birthdate', DateType::class, array(
                 'label' => 'Date de naissance',
+                'widget' => 'single_text',
+                'html5' => false,
+                'format' => 'dd/MM/yyyy',
                 'attr' => array(
                     'readonly' => true,
                     'class' => 'information_birthdate')

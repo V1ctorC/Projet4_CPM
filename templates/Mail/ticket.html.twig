@@ -91,7 +91,7 @@
             <tr>
                 <td>{{ customer.lastname | capitalize}}</td>
                 <td>{{ customer.firstname | capitalize}}</td>
-                <td>{{ customer.birthdate }}</td>
+                <td>{{ customer.birthdate | date('d-m-Y')}}</td>
                 <td>{% if customer.reducedprice == 1 %}Oui{% else %}Non{% endif %}</td>
                 <td>{{ customer.price }}€</td>
             </tr>
