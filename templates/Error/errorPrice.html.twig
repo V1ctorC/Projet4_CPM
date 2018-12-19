@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+
+    <meta http-equiv="Refresh" content="8; url={{ absolute_url(path('homepage')) }}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="blockError">
+        <div class="jumbotron">
+            <h1>Vous ne pouvez pas commander de billets s'il n'y a que des enfants de moins de 4 ans !</h1>
+            <p>Nous vous invitons à ajouter d'autres visiteurs</p>
+        </div>
+    </div>
+{% endblock %}

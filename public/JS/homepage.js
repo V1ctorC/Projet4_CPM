@@ -13,7 +13,7 @@ $( function() {
         monthNamesShort: [ "Jan", "Fev", "Mars", "Avr", "Mai", "Juin", "Jul", "Août", "Sep", "Oct", "Nov", "Dec" ],
         beforeShowDay: function(date){
             show = true;
-            if(date.getDay() == 0)
+            if(date.getDay() == 2)
             {
                 show = false;
             }
@@ -23,7 +23,7 @@ $( function() {
                     show = false;
                 }
             }
-            var display = [show,'',(show)?'':'Hors dimanche et jours fériés'];
+            var display = [show,'',(show)?'':'Hors Mardi et jours fériés'];
             return display;
         },
         onSelect : function () {

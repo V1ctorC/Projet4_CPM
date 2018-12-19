@@ -111,6 +111,11 @@ class TicketingController extends AbstractController
             $sum = $sum + $price;
         }
 
+        if ($sum<= 4)
+        {
+            return $this->redirectToRoute('errorPrice');
+        }
+
         $session->set('sum', $sum);
 
 
@@ -212,8 +217,17 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/errorDay", name="errorDay")
      */
-    public function error()
+    public function errorDay()
     {
         return $this->render('Error/errorDay.html.twig');
     }
+
+    /**
+     * @Route ("/errorPrice", name="errorPrice")
+     */
+    public function errorPrice()
+    {
+        return $this->render('Error/errorPrice.html.twig');
+    }
+
 }
