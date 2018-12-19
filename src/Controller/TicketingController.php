@@ -80,6 +80,14 @@ class TicketingController extends AbstractController
         $form = $this->createForm(CollectionType::class, $user, ['entry_type' => InformationType::class]);
         $form->handleRequest($request);
 
+        for ($i = 0; $i<$quantity; $i++)
+        {
+            if (($user[$i]->getBirthdate() != null) && (!preg_match('/[0-3]\d\/[0-1]\d\/[1-2](0|9)\d\d/', $user[$i]->getBirthdate())))
+            {
+                return $this->redirectToRoute('errorDate');
+            }
+        }
+
         if ($form->isSubmitted() && $form->isValid())
         {
 

@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09f4d163-0884-4c6b-b0b9-64766a4f8238" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/Error/errorDate.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TicketingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TicketingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Mail/ticket.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Mail/ticket.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Ticketing/summary.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Ticketing/summary.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,36 +26,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Form/BookingType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/InformationType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-              <folding>
-                <element signature="e#28#55#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="797">
+              <caret line="111" column="7" selection-start-line="111" selection-start-column="7" selection-end-line="111" selection-end-column="7" />
               <folding>
                 <element signature="e#34#57#0#PHP" expanded="true" />
                 <element signature="e#1063#1074#1#PHP" expanded="true" />
                 <element signature="e#1477#1487#1#PHP" expanded="true" />
                 <element signature="e#1846#1859#1#PHP" expanded="true" />
+                <element signature="e#2871#2882#1#PHP" expanded="true" />
+                <element signature="e#3512#3521#1#PHP" expanded="true" />
                 <element signature="e#3801#3813#1#PHP" expanded="true" />
                 <element signature="e#6494#6520#1#PHP" expanded="true" />
                 <element signature="e#6663#6691#1#PHP" expanded="true" />
@@ -150,13 +128,13 @@
         <option value="$PROJECT_DIR$/templates/Error/errorPrice.html.twig" />
         <option value="$PROJECT_DIR$/templates/Ticketing/homepage.html.twig" />
         <option value="$PROJECT_DIR$/public/CSS/style.css" />
-        <option value="$PROJECT_DIR$/src/Form/InformationType.php" />
         <option value="$PROJECT_DIR$/src/Entity/Information.php" />
         <option value="$PROJECT_DIR$/templates/Ticketing/summary.html.twig" />
         <option value="$PROJECT_DIR$/templates/Mail/ticket.html.twig" />
         <option value="$PROJECT_DIR$/templates/Error/errorDate.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/TicketingController.php" />
         <option value="$PROJECT_DIR$/src/Form/BookingType.php" />
+        <option value="$PROJECT_DIR$/src/Controller/TicketingController.php" />
+        <option value="$PROJECT_DIR$/src/Form/InformationType.php" />
       </list>
     </option>
   </component>
@@ -425,12 +403,12 @@
       <workItem from="1545069607167" duration="903000" />
       <workItem from="1545119753090" duration="12668000" />
       <workItem from="1545143238513" duration="38000" />
-      <workItem from="1545206588198" duration="11234000" />
+      <workItem from="1545206588198" duration="12511000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152622000" />
+    <option name="totallyTimeSpent" value="153899000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -645,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Ticketing/homepage.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="66" column="35" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/CSS/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -729,27 +700,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#34#57#0#PHP" expanded="true" />
-            <element signature="e#1063#1074#1#PHP" expanded="true" />
-            <element signature="e#1477#1487#1#PHP" expanded="true" />
-            <element signature="e#1846#1859#1#PHP" expanded="true" />
-            <element signature="e#3801#3813#1#PHP" expanded="true" />
-            <element signature="e#6494#6520#1#PHP" expanded="true" />
-            <element signature="e#6663#6691#1#PHP" expanded="true" />
-            <element signature="e#6840#6867#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/InformationType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        <state relative-caret-position="241">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
           <folding>
             <element signature="e#28#55#0#PHP" expanded="true" />
           </folding>
@@ -758,8 +712,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/BookingType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        <state relative-caret-position="-56">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Ticketing/homepage.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="66" column="35" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="797">
+          <caret line="111" column="7" selection-start-line="111" selection-start-column="7" selection-end-line="111" selection-end-column="7" />
+          <folding>
+            <element signature="e#34#57#0#PHP" expanded="true" />
+            <element signature="e#1063#1074#1#PHP" expanded="true" />
+            <element signature="e#1477#1487#1#PHP" expanded="true" />
+            <element signature="e#1846#1859#1#PHP" expanded="true" />
+            <element signature="e#2871#2882#1#PHP" expanded="true" />
+            <element signature="e#3512#3521#1#PHP" expanded="true" />
+            <element signature="e#3801#3813#1#PHP" expanded="true" />
+            <element signature="e#6494#6520#1#PHP" expanded="true" />
+            <element signature="e#6663#6691#1#PHP" expanded="true" />
+            <element signature="e#6840#6867#1#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
