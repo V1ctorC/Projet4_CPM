@@ -89,8 +89,8 @@
             </tr>
             {% for customer in user %}
             <tr>
-                <td>{{ customer.lastname }}</td>
-                <td>{{ customer.firstname }}</td>
+                <td>{{ customer.lastname | capitalize}}</td>
+                <td>{{ customer.firstname | capitalize}}</td>
                 <td>{{ customer.birthdate }}</td>
                 <td>{% if customer.reducedprice == 1 %}Oui{% else %}Non{% endif %}</td>
                 <td>{{ customer.price }}€</td>

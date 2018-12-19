@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+
+    <meta http-equiv="Refresh" content="5; url={{ absolute_url(path('homepage')) }}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="blockError">
+        <div class="jumbotron">
+            <h1>Veuillez sélectionner une date valide !</h1>
+            <p>La date doit respecter le format jj/mm/aaaa</p>
+        </div>
+        <div>
+{% endblock %}

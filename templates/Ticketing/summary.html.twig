@@ -25,8 +25,8 @@
                     {% set counter = counter + 1 %}
                     <tr>
                         <th scope="row">{{ counter }}</th>
-                        <td>{{ customer.lastname }}</td>
-                        <td>{{ customer.firstname }}</td>
+                        <td>{{ customer.lastname | capitalize}}</td>
+                        <td>{{ customer.firstname | capitalize}}</td>
                         <td>{{ customer.birthdate }}</td>
                         <td>{{ customer.country }}</td>
                         {% if customer.reducedprice == 0 %}

@@ -30,6 +30,11 @@ class TicketingController extends AbstractController
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
 
+        if (($booking->getBookingday() != null) && (!preg_match('/[0-3]\d\/[0-1]\d\/201[8-9]/', $booking->getBookingday())))
+        {
+            return $this->redirectToRoute('errorDate');
+        }
+
 
         $listBooking = $em->getRepository(Booking::class)->findBy(array('bookingday' => $booking->getBookingday()));
         foreach ($listBooking as $oldBooking)
@@ -99,7 +104,7 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/summary", name="summary")
      */
-    public function summary(Session $session, CalculationDate $calculationDate, Request $request)
+    public function summary(Session $session)
     {
         $counter = 0;
         $sum = 0;
@@ -111,7 +116,7 @@ class TicketingController extends AbstractController
             $sum = $sum + $price;
         }
 
-        if ($sum<= 4)
+        if ($sum< 4)
         {
             return $this->redirectToRoute('errorPrice');
         }
@@ -228,6 +233,14 @@ class TicketingController extends AbstractController
     public function errorPrice()
     {
         return $this->render('Error/errorPrice.html.twig');
+    }
+
+    /**
+     * @Route ("/errorDate", name="errorDate")
+     */
+    public function errorDate()
+    {
+        return $this->render('Error/errorDate.html.twig');
     }
 
 }
