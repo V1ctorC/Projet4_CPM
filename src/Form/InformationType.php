@@ -24,6 +24,7 @@ class InformationType extends AbstractType
             ->add('birthdate', TextType::class, array(
                 'label' => 'Date de naissance',
                 'attr' => array(
+                    'readonly' => true,
                     'class' => 'information_birthdate')
             ))
             ->add('country', CountryType::class, array(

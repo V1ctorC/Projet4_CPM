@@ -131,6 +131,7 @@ summary.html.twig
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 /**
@@ -143,4 +144,23 @@ errorDay.html.twig
 {
     margin-top: 50vh;
     transform: translateY(-50%);
+}
+
+@media screen and (max-width: 640px)
+{
+    #cancelAndPaiement
+    {
+        text-align: center;
+        flex-direction: column;
+    }
+
+    #cancelButton
+    {
+        margin: 10px auto 10px auto;
+    }
+
+    #paiementButton
+    {
+        margin: 10px auto 10px auto;
+    }
 }
