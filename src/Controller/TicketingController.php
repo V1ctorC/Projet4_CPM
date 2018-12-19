@@ -30,10 +30,10 @@ class TicketingController extends AbstractController
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
 
-        if (($booking->getBookingday() != null) && (!preg_match('/[0-3]\d\/[0-1]\d\/201[8-9]/', $booking->getBookingday())))
+        /*if (($booking->getBookingday() != null) && (!preg_match('/[0-3]\d\/[0-1]\d\/201[8-9]/', $booking->getBookingday())))
         {
             return $this->redirectToRoute('errorDate');
-        }
+        }*/
 
 
         $listBooking = $em->getRepository(Booking::class)->findBy(array('bookingday' => $booking->getBookingday()));
@@ -68,6 +68,7 @@ class TicketingController extends AbstractController
     public function contactInformation(Request $request, Session $session, CalculationDate $calculationDate)
     {
         $booking = $session->get('booking');
+        dump($booking);
         $quantity = $booking->getQuantity();
         $ticketType = $booking->getType();
         $counterForm = 0;
@@ -191,19 +192,18 @@ class TicketingController extends AbstractController
     public function ajaxDay(Request $request)
     {
         $post = $request->request->get('field');
+        $timestamp = strtotime($post);
+        $date = new \DateTime();
+        $date->setTimestamp($timestamp);
         $repository = $this->getDoctrine()->getRepository(Booking::class);
         $ticketSoldDay = $repository->findBy(
-            ['bookingday' => $post]
+            ['bookingday' => $date ]
         );
         $nbVisitors = 0;
         foreach ($ticketSoldDay as $booking)
         {
-            $isPaid = $booking->getPaid();
-            if ($isPaid == 1)
-            {
-                $visitor = $booking->getQuantity();
-                $nbVisitors = $nbVisitors + $visitor;
-            }
+            $visitor = $booking->getQuantity();
+            $nbVisitors = $nbVisitors + $visitor;
         }
 
         if ($nbVisitors < 1000)

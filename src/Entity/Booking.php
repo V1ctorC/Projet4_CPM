@@ -25,8 +25,9 @@ class Booking
     private $bookingnumber;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime", length=255)
      * @Assert\NotBlank
+     * @Assert\GreaterThan("today")
      */
     private $bookingday;
 
@@ -78,17 +79,7 @@ class Booking
         return $this;
     }
 
-    public function getBookingday(): ?string
-    {
-        return $this->bookingday;
-    }
 
-    public function setBookingday(string $bookingday): self
-    {
-        $this->bookingday = $bookingday;
-
-        return $this;
-    }
 
     public function getType(): ?string
     {
@@ -165,6 +156,18 @@ class Booking
     public function setMail(string $mail): self
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    public function getBookingday(): ?\DateTimeInterface
+    {
+        return $this->bookingday;
+    }
+
+    public function setBookingday(\DateTimeInterface $bookingday): self
+    {
+        $this->bookingday = $bookingday;
 
         return $this;
     }

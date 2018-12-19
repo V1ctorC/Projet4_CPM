@@ -4,7 +4,7 @@ $( function() {
     $( "#booking_bookingday" ).datepicker({
         minDate : '0',
         maxDate : '+1Y',
-        dateFormat : "dd/mm/yy",
+        dateFormat : "dd-mm-yy",
         dayNames: [ "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" ],
         dayNamesMin: [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ],
         dayNamesShort: [ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ],

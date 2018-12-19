@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Booking;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,11 +15,16 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('bookingday', TextType::class, array(
+            ->add('bookingday', DateType::class, array(
                 'label' => 'Date souhaitée',
+                'widget' => 'single_text',
+                'html5' => false,
+                'format' => 'dd/MM/yyyy',
                 'attr' => array(
-                    'readonly' => true,
-                )))
+                    'data-type' => 'date',
+                    'readonly' => true
+                )
+                ))
             ->add('type', ChoiceType::class, array(
                 'label' => 'Type de billet',
                 'choices' => array(
@@ -42,8 +48,8 @@ class BookingType extends AbstractType
                     '9' => 9,
                     '10' => 10
                 )
-            ))
-        ;
+            ));
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
