@@ -19,7 +19,7 @@ class BookingType extends AbstractType
                 'label' => 'Date souhaitée',
                 'widget' => 'single_text',
                 'html5' => false,
-                'format' => 'dd/MM/yyyy',
+                'format' => 'dd-MM-yyyy',
                 'attr' => array(
                     'data-type' => 'date',
                     'readonly' => true
