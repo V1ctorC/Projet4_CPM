@@ -35,6 +35,8 @@ class Booking
 
     /**
      * @ORM\Column(type="string", length=1)
+     * @Assert\NotNull(message="Vous devez selectionner un type de ticket")
+     * @OwnAssert\CheckBookingType
      */
     private $type;
 
@@ -45,6 +47,12 @@ class Booking
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *     min = 1,
+     *     max = 10,
+     *     minMessage="Vous devez réserver au moins 1 billet",
+     *     maxMessage="Vous ne pouvez réserver plus de 10 billets"
+     * )
      */
     private $quantity;
 

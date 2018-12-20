@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: VictorChevalier
  * Date: 2018-12-20
- * Time: 11:11
+ * Time: 14:28
  */
 
 namespace App\Validator\Constraints;
@@ -14,9 +14,9 @@ use Symfony\Component\Validator\Constraint;
 /**
  * @Annotation
  */
-class CheckBookingDate extends Constraint
+class CheckBookingType extends Constraint
 {
-    public $message = "Il y a un problème avec la date que vous avez indiqué";
+    public $message = "Il y a un problème avec le type de ticket sélectionné";
 
     public function validatedBy()
     {
