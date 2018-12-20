@@ -21,38 +21,23 @@ class TicketingController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function homepage(Request $request, Session $session)
+    public function homepage(Request $request, Session $session, CalculationDate $calculationDate)
     {
         $booking = new Booking();
         $em = $this->getDoctrine()->getManager();
-        $quantityOldBooking = 0;
 
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
 
-        /*if (($booking->getBookingday() != null) && (!preg_match('/[0-3]\d\/[0-1]\d\/201[8-9]/', $booking->getBookingday())))
-        {
-            return $this->redirectToRoute('errorDate');
-        }*/
-
-
         $listBooking = $em->getRepository(Booking::class)->findBy(array('bookingday' => $booking->getBookingday()));
-        foreach ($listBooking as $oldBooking)
-        {
-            $quantityOldBooking = $quantityOldBooking + $oldBooking->getQuantity();
-        }
-        if ($quantityOldBooking >= 1000)
+        if ($calculationDate->ticketsSold($listBooking) == false)
         {
             return $this->redirectToRoute('errorDay');
         }
 
-
         if ($form->isSubmitted() && $form->isValid())
         {
-            $characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            $bookingNumber = substr(str_shuffle(str_repeat($characters, 10)), 0, 10);
-            $booking->setBookingnumber($bookingNumber);
-
+            $calculationDate->generateBookingNumber($booking);
             $session->set('booking', $form->getData());
 
             return $this->redirectToRoute('contactInfo');

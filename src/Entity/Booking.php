@@ -27,9 +27,10 @@ class Booking
 
     /**
      * @ORM\Column(type="datetime", length=255)
+     * @Assert\DateTime
      * @Assert\NotBlank
      * @Assert\GreaterThanOrEqual("today", message="La date doit être au moins celle d'aujourd'hui")
-     * @OwnAssert\CheckBookingDate
+     * @OwnAssert\CheckBookingDate()
      */
     private $bookingday;
 

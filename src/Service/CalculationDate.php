@@ -53,4 +53,31 @@ class CalculationDate
 
         return $priceDay;
     }
+
+    public function ticketsSold($listTickets)
+    {
+        $quantityOldBooking = 0;
+
+        foreach ($listTickets as $oldBooking)
+        {
+            $quantityOldBooking = $quantityOldBooking + $oldBooking->getQuantity();
+        }
+
+        if ($quantityOldBooking >= 1000)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+
+    public function generateBookingNumber($booking)
+    {
+        $characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $bookingNumber = substr(str_shuffle(str_repeat($characters, 10)), 0, 10);
+        $booking->setBookingnumber($bookingNumber);
+
+        return;
+    }
 }
