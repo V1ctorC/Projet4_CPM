@@ -26,7 +26,7 @@ class InformationType extends AbstractType
                 'label' => 'Date de naissance',
                 'widget' => 'single_text',
                 'html5' => false,
-                'format' => 'dd/MM/yyyy',
+                'format' => 'dd-MM-yyyy',
                 'attr' => array(
                     'readonly' => true,
                     'class' => 'information_birthdate')
