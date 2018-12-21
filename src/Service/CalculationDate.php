@@ -108,4 +108,28 @@ class CalculationDate
 
         return $sum;
     }
+
+    public function tryStripe ($token, $sum, $to, $booking)
+    {
+        try
+        {
+            $charge = \Stripe\Charge::create([
+                'amount' => $sum * 100,
+                'currency' => 'eur',
+                'description' => 'Musée du Louvre',
+                'source' => $token,
+            ]);
+            $booking->setMail($to);
+            $booking->setPaid(true);
+
+            return true;
+
+
+        } catch (\Stripe\Error\Card $e) {
+
+            return false;
+
+        }
+
+    }
 }

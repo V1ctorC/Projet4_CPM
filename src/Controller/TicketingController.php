@@ -98,46 +98,32 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/payment", name="payment")
      */
-    public function paymentAction(Request $request, Session $session, Mailer $mailer)
+    public function paymentAction(Request $request, Session $session, Mailer $mailer, CalculationDate $calculationDate)
     {
         $em = $this->getDoctrine()->getManager();
-
         $booking = $session->get('booking');
         $user = $session->get('user');
         $sum = $session->get('sum');
-        $sumStripe = $sum * 100;
-
 
         \Stripe\Stripe::setApiKey("sk_test_rAGQCR0jx66px1wmcyb3me6U");
-
         $token = $request->request->get('stripeToken');
         $to = $request->request->get('stripeEmail');
 
-        try
+        $stripePayment = $calculationDate->tryStripe($token, $sum, $to, $booking);
+
+        if ($stripePayment != true)
         {
-            $charge = \Stripe\Charge::create([
-                'amount' => $sumStripe,
-                'currency' => 'eur',
-                'description' => 'Musée du Louvre',
-                'source' => $token,
-            ]);
-            dump($user);
-            $booking->setMail($to);
-            $booking->setPaid(true);
-            $em->persist($booking);
-            for ($i=0; $i<$booking->getQuantity();$i++)
-            {
-                $customer = $user[$i];
-                $em->persist($customer);
-            }
-            $em->flush();
-
-        } catch (\Stripe\Error\Card $e) {
-
             return $this->redirectToRoute('summary');
-
         }
-        $user = $session->get('user');
+
+        for ($i=0; $i<$booking->getQuantity();$i++)
+        {
+            $customer = $user[$i];
+            $em->persist($customer);
+        }
+        $em->persist($booking);
+        $em->flush();
+
         $mailer->sendTicket($to, $user, $sum, $booking);
 
         return $this->redirectToRoute('erase');
