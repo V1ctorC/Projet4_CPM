@@ -54,8 +54,6 @@ class TicketingController extends AbstractController
     {
         $booking = $session->get('booking');
         $quantity = $booking->getQuantity();
-        $ticketType = $booking->getType();
-        $counterForm = 0;
 
         for ($i = 0; $i < $quantity; $i++)
         {
@@ -75,22 +73,14 @@ class TicketingController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-
-            for ($i=0;$i<$quantity;$i++)
-            {
-                $customer = $user[$i];
-                $customer->setAge($calculationDate->getAge($customer->getBirthdate()));
-                $priceDay = ($calculationDate->priceAge($customer->getAge(), $customer->getReducedprice()));
-                $customer->setPrice($calculationDate->priceTicketType($priceDay, $ticketType));
-                $customer->setIdbooking($booking);
-            }
+            $calculationDate->addAgePrice($user, $booking);
             $session->set('user', $user);
 
             return $this->redirectToRoute('summary');
         }
 
         return $this->render('Ticketing/contactInformation.html.twig', array(
-            'form' => $form->createView(), 'counterForm' => $counterForm));
+            'form' => $form->createView()));
     }
 
 

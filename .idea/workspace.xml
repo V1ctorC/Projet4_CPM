@@ -4,7 +4,6 @@
     <list default="true" id="09f4d163-0884-4c6b-b0b9-64766a4f8238" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TicketingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TicketingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Booking.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/CalculationDate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CalculationDate.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,24 +17,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="51" column="12" lean-forward="true" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
+            <state relative-caret-position="636">
+              <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
               <folding>
                 <element signature="e#34#57#0#PHP" expanded="true" />
-                <element signature="e#1403#1413#1#PHP" expanded="true" />
+                <element signature="e#3126#3135#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Service/CalculationDate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="80" column="15" selection-start-line="80" selection-start-column="15" selection-end-line="80" selection-end-column="15" />
+            <state relative-caret-position="323">
+              <caret line="90" column="34" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -43,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Booking.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+            <state relative-caret-position="480">
+              <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
               <folding>
                 <element signature="e#30#78#0#PHP" expanded="true" />
               </folding>
@@ -55,7 +54,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Validator/Constraints/CheckBookingDateValidator.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
+            <state relative-caret-position="270">
               <caret line="24" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="e#138#181#0#PHP" expanded="true" />
@@ -115,12 +114,12 @@
         <option value="$PROJECT_DIR$/src/Validator/Constraints/CheckBirthdateValidator.php" />
         <option value="$PROJECT_DIR$/public/JS/contactInformation.js" />
         <option value="$PROJECT_DIR$/src/Form/InformationType.php" />
-        <option value="$PROJECT_DIR$/src/Entity/Booking.php" />
         <option value="$PROJECT_DIR$/src/Validator/Constraints/CheckBookingDateValidator.php" />
         <option value="$PROJECT_DIR$/src/Validator/Constraints/CheckBookingTypeValidator.php" />
         <option value="$PROJECT_DIR$/src/Form/BookingType.php" />
-        <option value="$PROJECT_DIR$/src/Service/CalculationDate.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Booking.php" />
         <option value="$PROJECT_DIR$/src/Controller/TicketingController.php" />
+        <option value="$PROJECT_DIR$/src/Service/CalculationDate.php" />
       </list>
     </option>
   </component>
@@ -403,18 +402,19 @@
       <workItem from="1545119753090" duration="12668000" />
       <workItem from="1545143238513" duration="38000" />
       <workItem from="1545206588198" duration="24592000" />
-      <workItem from="1545328164653" duration="2791000" />
+      <workItem from="1545328164653" duration="3036000" />
+      <workItem from="1545380664032" duration="2586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181577000" />
+    <option name="totallyTimeSpent" value="184408000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26898223" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.273021" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -426,7 +426,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.27439886" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.27439886" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -728,7 +728,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Validator/Constraints/CheckBookingDateValidator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
+        <state relative-caret-position="270">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="e#138#181#0#PHP" expanded="true" />
@@ -745,29 +745,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Booking.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        <state relative-caret-position="480">
+          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
           <folding>
             <element signature="e#30#78#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/CalculationDate.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="80" column="15" selection-start-line="80" selection-start-column="15" selection-end-line="80" selection-end-column="15" />
+        <state relative-caret-position="636">
+          <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding>
+            <element signature="e#34#57#0#PHP" expanded="true" />
+            <element signature="e#3126#3135#1#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
+    <entry file="file://$PROJECT_DIR$/src/Service/CalculationDate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="51" column="12" lean-forward="true" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
-          <folding>
-            <element signature="e#34#57#0#PHP" expanded="true" />
-            <element signature="e#1403#1413#1#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="90" column="34" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
         </state>
       </provider>
     </entry>

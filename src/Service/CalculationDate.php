@@ -80,4 +80,19 @@ class CalculationDate
 
         return;
     }
+
+    public function addAgePrice($user, $booking)
+    {
+        $quantity = $booking->getQuantity();
+        $ticketType = $booking->getType();
+
+        for ($i=0;$i<$quantity;$i++)
+        {
+            $customer = $user[$i];
+            $customer->setAge($this->getAge($customer->getBirthdate()));
+            $priceDay = ($this->priceAge($customer->getAge(), $customer->getReducedprice()));
+            $customer->setPrice($this->priceTicketType($priceDay, $ticketType));
+            $customer->setIdbooking($booking);
+        }
+    }
 }
