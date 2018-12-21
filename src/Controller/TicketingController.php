@@ -52,6 +52,11 @@ class TicketingController extends AbstractController
      */
     public function contactInformation(Request $request, Session $session, CalculationDate $calculationDate)
     {
+        if ($session->get('booking') == null)
+        {
+            return $this->redirectToRoute('homepage');
+        }
+
         $booking = $session->get('booking');
         $quantity = $booking->getQuantity();
 
@@ -81,6 +86,11 @@ class TicketingController extends AbstractController
      */
     public function summary(Session $session, CalculationDate $calculationDate)
     {
+        if ($session->get('booking') == null || $session->get('user') == null)
+        {
+            return $this->redirectToRoute('homepage');
+        }
+
         $user = $session->get('user');
         $sum = $calculationDate->calculationSum($user);
 
@@ -100,6 +110,11 @@ class TicketingController extends AbstractController
      */
     public function paymentAction(Request $request, Session $session, Mailer $mailer, CalculationDate $calculationDate)
     {
+        if ($session->get('booking') == null || $session->get('user') == null)
+        {
+            return $this->redirectToRoute('homepage');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $booking = $session->get('booking');
         $user = $session->get('user');
@@ -126,7 +141,7 @@ class TicketingController extends AbstractController
 
         $mailer->sendTicket($to, $user, $sum, $booking);
 
-        return $this->redirectToRoute('erase');
+        return $this->redirectToRoute("success");
     }
 
 
@@ -161,6 +176,16 @@ class TicketingController extends AbstractController
         $session->invalidate();
 
         return $this->redirectToRoute('homepage');
+    }
+
+    /**
+     * @Route ("/success", name="success")
+     */
+    public function successAction(Session $session)
+    {
+        $session->invalidate();
+
+        return $this->render('Ticketing/success.html.twig');
     }
 
     /**
