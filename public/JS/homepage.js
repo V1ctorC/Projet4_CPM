@@ -13,7 +13,7 @@ $( function() {
         monthNamesShort: [ "Jan", "Fev", "Mars", "Avr", "Mai", "Juin", "Jul", "Août", "Sep", "Oct", "Nov", "Dec" ],
         beforeShowDay: function(date){
             show = true;
-            if(date.getDay() == 2)
+            if(date.getDay() == 2 || date.getDay() == 0)
             {
                 show = false;
             }
@@ -67,7 +67,7 @@ function choiceTypeTicket(date)
     if (mm < 10) {
         mm = '0' + mm;
     }
-    var currentDate = dd + '/' + mm + '/' + yyyy;
+    var currentDate = dd + '-' + mm + '-' + yyyy;
 
     var UTChours = today.getUTCHours();
     var currentHour = UTChours + 1;
