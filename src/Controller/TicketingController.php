@@ -6,8 +6,10 @@ use App\Entity\Booking;
 use App\Entity\Information;
 use App\Form\BookingType;
 use App\Form\InformationType;
+use App\Service\BookingData;
 use App\Service\CalculationDate;
 use App\Service\Mailer;
+use App\Service\PriceCalculation;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +23,7 @@ class TicketingController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function homepage(Request $request, Session $session, CalculationDate $calculationDate)
+    public function homepage(Request $request, Session $session, BookingData $bookingData)
     {
         $booking = new Booking();
         $em = $this->getDoctrine()->getManager();
@@ -30,14 +32,14 @@ class TicketingController extends AbstractController
         $form->handleRequest($request);
 
         $listBooking = $em->getRepository(Booking::class)->findBy(array('bookingday' => $booking->getBookingday()));
-        if ($calculationDate->ticketsSold($listBooking) == false)
+        if ($bookingData->ticketsSold($listBooking) == false)
         {
             return $this->redirectToRoute('errorDay');
         }
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $calculationDate->generateBookingNumber($booking);
+            $bookingData->generateBookingNumber($booking);
             $session->set('booking', $form->getData());
 
             return $this->redirectToRoute('contactInfo');
@@ -50,7 +52,7 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/contact_information", name="contactInfo")
      */
-    public function contactInformation(Request $request, Session $session, CalculationDate $calculationDate)
+    public function contactInformation(Request $request, Session $session, PriceCalculation $priceCalculation)
     {
         if ($session->get('booking') == null)
         {
@@ -70,7 +72,7 @@ class TicketingController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $calculationDate->addAgePrice($user, $booking);
+            $priceCalculation->addAgePrice($user, $booking);
             $session->set('user', $user);
 
             return $this->redirectToRoute('summary');
@@ -84,7 +86,7 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/summary", name="summary")
      */
-    public function summary(Session $session, CalculationDate $calculationDate)
+    public function summary(Session $session, PriceCalculation $priceCalculation)
     {
         if ($session->get('booking') == null || $session->get('user') == null)
         {
@@ -92,7 +94,7 @@ class TicketingController extends AbstractController
         }
 
         $user = $session->get('user');
-        $sum = $calculationDate->calculationSum($user);
+        $sum = $priceCalculation->calculationSum($user);
 
         if ($sum< 4)
         {
@@ -108,7 +110,7 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/payment", name="payment")
      */
-    public function paymentAction(Request $request, Session $session, Mailer $mailer, CalculationDate $calculationDate)
+    public function paymentAction(Request $request, Session $session, Mailer $mailer, PriceCalculation $priceCalculation)
     {
         if ($session->get('booking') == null || $session->get('user') == null)
         {
@@ -124,7 +126,7 @@ class TicketingController extends AbstractController
         $token = $request->request->get('stripeToken');
         $to = $request->request->get('stripeEmail');
 
-        $stripePayment = $calculationDate->tryStripe($token, $sum, $to, $booking);
+        $stripePayment = $priceCalculation->tryStripe($token, $sum, $to, $booking);
 
         if ($stripePayment != true)
         {
@@ -148,7 +150,7 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/ajax")
      */
-    public function ajaxDay(Request $request, CalculationDate $calculationDate)
+    public function ajaxDay(Request $request, BookingData $bookingData)
     {
         $post = $request->request->get('field');
         $date = new \DateTime();
@@ -156,7 +158,7 @@ class TicketingController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Booking::class);
         $ticketSoldDay = $repository->findBy(['bookingday' => $date ]);
 
-        $nbVisitors = $calculationDate->AjaxSold($ticketSoldDay);
+        $nbVisitors = $bookingData->AjaxSold($ticketSoldDay);
 
         if ($nbVisitors < 1000)
         {
