@@ -63,14 +63,6 @@ class TicketingController extends AbstractController
         $form = $this->createForm(CollectionType::class, $user, ['entry_type' => InformationType::class]);
         $form->handleRequest($request);
 
-        /*for ($i = 0; $i<$quantity; $i++)
-        {
-            if (($user[$i]->getBirthdate() != null) && (!preg_match('/[0-3]\d\/[0-1]\d\/[1-2](0|9)\d\d/', $user[$i]->getBirthdate())))
-            {
-                return $this->redirectToRoute('errorDate');
-            }
-        }*/
-
         if ($form->isSubmitted() && $form->isValid())
         {
             $calculationDate->addAgePrice($user, $booking);
@@ -87,17 +79,10 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/summary", name="summary")
      */
-    public function summary(Session $session)
+    public function summary(Session $session, CalculationDate $calculationDate)
     {
-        $counter = 0;
-        $sum = 0;
         $user = $session->get('user');
-
-        foreach ($user as $customer)
-        {
-            $price = $customer->getPrice();
-            $sum = $sum + $price;
-        }
+        $sum = $calculationDate->calculationSum($user);
 
         if ($sum< 4)
         {
@@ -106,8 +91,7 @@ class TicketingController extends AbstractController
 
         $session->set('sum', $sum);
 
-
-        return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'sum'=>$sum, 'counter'=>$counter));
+        return $this->render('Ticketing/summary.html.twig', array('user'=>$user, 'sum'=>$sum));
     }
 
 

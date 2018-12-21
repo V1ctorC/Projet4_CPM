@@ -95,4 +95,17 @@ class CalculationDate
             $customer->setIdbooking($booking);
         }
     }
+
+    public function calculationSum($user)
+    {
+        $sum = 0;
+
+        foreach ($user as $customer)
+        {
+            $price = $customer->getPrice();
+            $sum = $sum + $price;
+        }
+
+        return $sum;
+    }
 }

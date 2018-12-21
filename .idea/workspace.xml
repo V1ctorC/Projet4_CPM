@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09f4d163-0884-4c6b-b0b9-64766a4f8238" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TicketingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TicketingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/CalculationDate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CalculationDate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Ticketing/summary.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Ticketing/summary.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+            <state relative-caret-position="-585">
+              <caret line="88" column="36" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="36" />
               <folding>
                 <element signature="e#34#57#0#PHP" expanded="true" />
                 <element signature="e#3126#3135#1#PHP" expanded="true" />
@@ -30,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Service/CalculationDate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="90" column="34" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
+            <state relative-caret-position="376">
+              <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -105,7 +105,6 @@
         <option value="$PROJECT_DIR$/templates/Ticketing/contactInformation.html.twig" />
         <option value="$PROJECT_DIR$/public/CSS/style.css" />
         <option value="$PROJECT_DIR$/public/JS/homepage.js" />
-        <option value="$PROJECT_DIR$/templates/Ticketing/summary.html.twig" />
         <option value="$PROJECT_DIR$/templates/Mail/ticket.html.twig" />
         <option value="$PROJECT_DIR$/src/Validator/Constraints/CheckBookingType.php" />
         <option value="$PROJECT_DIR$/src/Validator/Constraints/CheckBookingDate.php" />
@@ -118,8 +117,9 @@
         <option value="$PROJECT_DIR$/src/Validator/Constraints/CheckBookingTypeValidator.php" />
         <option value="$PROJECT_DIR$/src/Form/BookingType.php" />
         <option value="$PROJECT_DIR$/src/Entity/Booking.php" />
-        <option value="$PROJECT_DIR$/src/Controller/TicketingController.php" />
+        <option value="$PROJECT_DIR$/templates/Ticketing/summary.html.twig" />
         <option value="$PROJECT_DIR$/src/Service/CalculationDate.php" />
+        <option value="$PROJECT_DIR$/src/Controller/TicketingController.php" />
       </list>
     </option>
   </component>
@@ -403,12 +403,12 @@
       <workItem from="1545143238513" duration="38000" />
       <workItem from="1545206588198" duration="24592000" />
       <workItem from="1545328164653" duration="3036000" />
-      <workItem from="1545380664032" duration="2586000" />
+      <workItem from="1545380664032" duration="3651000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184408000" />
+    <option name="totallyTimeSpent" value="185473000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -631,13 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Ticketing/summary.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/Mail/ticket.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
@@ -753,21 +746,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
+    <entry file="file://$PROJECT_DIR$/templates/Ticketing/summary.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
-          <folding>
-            <element signature="e#34#57#0#PHP" expanded="true" />
-            <element signature="e#3126#3135#1#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Service/CalculationDate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="90" column="34" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
+        <state relative-caret-position="376">
+          <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/TicketingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-585">
+          <caret line="88" column="36" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="36" />
+          <folding>
+            <element signature="e#34#57#0#PHP" expanded="true" />
+            <element signature="e#3126#3135#1#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
