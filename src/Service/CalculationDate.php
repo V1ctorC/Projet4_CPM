@@ -132,4 +132,17 @@ class CalculationDate
         }
 
     }
+
+    public function AjaxSold($ticketSoldDay)
+    {
+        $nbVisitors = 0;
+
+        foreach ($ticketSoldDay as $booking)
+        {
+            $visitor = $booking->getQuantity();
+            $nbVisitors = $nbVisitors + $visitor;
+        }
+
+        return $nbVisitors;
+    }
 }

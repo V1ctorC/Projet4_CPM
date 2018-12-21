@@ -133,22 +133,15 @@ class TicketingController extends AbstractController
     /**
      * @Route ("/ajax")
      */
-    public function ajaxDay(Request $request)
+    public function ajaxDay(Request $request, CalculationDate $calculationDate)
     {
         $post = $request->request->get('field');
-        $timestamp = strtotime($post);
         $date = new \DateTime();
-        $date->setTimestamp($timestamp);
+        $date->setTimestamp(strtotime($post));
         $repository = $this->getDoctrine()->getRepository(Booking::class);
-        $ticketSoldDay = $repository->findBy(
-            ['bookingday' => $date ]
-        );
-        $nbVisitors = 0;
-        foreach ($ticketSoldDay as $booking)
-        {
-            $visitor = $booking->getQuantity();
-            $nbVisitors = $nbVisitors + $visitor;
-        }
+        $ticketSoldDay = $repository->findBy(['bookingday' => $date ]);
+
+        $nbVisitors = $calculationDate->AjaxSold($ticketSoldDay);
 
         if ($nbVisitors < 1000)
         {
@@ -158,7 +151,6 @@ class TicketingController extends AbstractController
         {
             throw new \Exception('Something went wrong!');
         }
-
     }
 
     /**
