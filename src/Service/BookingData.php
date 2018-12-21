@@ -49,4 +49,20 @@ class BookingData
 
         return $nbVisitors;
     }
+
+    public function verifyType($booking)
+    {
+        $bookingDate = $booking->getBookingDay()->format('d-m-Y');
+        $currentDate = new \DateTime('now');
+        $currentHourUTC = $currentDate->format('H');
+        $currentHourUTC1 = $currentHourUTC + 1;
+        $currentDate = $currentDate->format('d-m-Y');
+
+        if (($bookingDate == $currentDate) && ($currentHourUTC1 >= 14))
+        {
+            $booking->setType('H');
+        }
+
+        return;
+    }
 }

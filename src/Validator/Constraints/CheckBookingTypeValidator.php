@@ -16,7 +16,6 @@ class CheckBookingTypeValidator extends ConstraintValidator
 {
     public function validate($value, Constraint $constraint)
     {
-        dump($value);
         if ("H" !== $value)
         {
             if ("W" !== $value)

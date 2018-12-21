@@ -40,6 +40,7 @@ class TicketingController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $bookingData->generateBookingNumber($booking);
+            $bookingData->verifyType($booking);
             $session->set('booking', $form->getData());
 
             return $this->redirectToRoute('contactInfo');
