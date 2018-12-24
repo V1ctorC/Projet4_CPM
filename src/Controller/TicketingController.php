@@ -7,7 +7,6 @@ use App\Entity\Information;
 use App\Form\BookingType;
 use App\Form\InformationType;
 use App\Service\BookingData;
-use App\Service\CalculationDate;
 use App\Service\Mailer;
 use App\Service\PriceCalculation;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
