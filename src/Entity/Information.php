@@ -20,11 +20,23 @@ class Information
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2, minMessage="Votre prénom doit comporter au moins 2 caractères")
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre prénom ne doit pas comporter de chiffres"
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2, minMessage="Votre prénom doit comporter au moins 2 caractères")
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre prénom ne doit pas comporter de chiffres"
+     * )
      */
     private $lastname;
 
