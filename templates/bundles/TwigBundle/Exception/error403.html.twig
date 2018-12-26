@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="blockError">
+        <div class="jumbotron">
+            <h1>Vous n'avez pas le droit d'accéder à cette page</h1>
+            <p>Vous pouvez revenir sur <a href="{{ path('homepage') }}">la page d'accueil</a> si vous le souhaitez.</p>
+        </div>
+    </div>
+
+{% endblock %}

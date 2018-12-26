@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="blockError">
+        <div class="jumbotron">
+            <h1>Erreur !</h1>
+            <p>Une erreur a été détecté sur la page demandée. Veuillez réessayer plus tard ou retournez sur
+                <a href="{{ path('homepage') }}">la page d'accueil</a>.</p>
+        </div>
+    </div>
+
+{% endblock %}

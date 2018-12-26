@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="blockError">
+        <div class="jumbotron">
+            <h1>La page que vous cherchez n'existe pas</h1>
+            <p>Vérifiez le lien que vous avez écrit. Vous pouvez revenir sur
+                <a href="{{ path('homepage') }}">la page d'accueil</a> si vous le souhaitez.</p>
+        </div>
+    </div>
+
+{% endblock %}
