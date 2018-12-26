@@ -37,4 +37,28 @@ class TicketingControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('html:contains("Billeterie du musée du Louvre")')
         ->count());
     }
+
+    /**
+     * @test
+     */
+    public function redirect()
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/summary');
+
+        $this->assertTrue($client->getResponse()->isRedirect());
+    }
+
+    /**
+     * @test
+     */
+    public function notFound()
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/summary/1');
+
+        $this->assertTrue($client->getResponse()->isNotFound());
+    }
 }
