@@ -16,7 +16,15 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+        {% endblock %}
+
+    {% block footer %}
+        <div id="footer">
+            2018 - Agence 321Web - <a href="{{ path('legalMention') }}">Mention légales</a> -
+            <a href="{{ path('termsOfSales') }}">CGV</a>
+        </div>
+    {% endblock %}
     </body>
+    {% block javascripts %}{% endblock %}
 </html>

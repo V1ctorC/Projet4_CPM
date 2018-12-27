@@ -214,4 +214,20 @@ class TicketingController extends AbstractController
         return $this->render('Error/errorDate.html.twig');
     }
 
+    /**
+     * @Route ("/legalmention", name="legalMention")
+     */
+    public function legalMention()
+    {
+        return $this->render('Legal/legalMention.html.twig');
+    }
+
+    /**
+     * @Route ("/termsofsales", name="termsOfSales")
+     */
+    public function termsOfSales()
+    {
+        return $this->render('Legal/termsOfSales.html.twig');
+    }
+
 }

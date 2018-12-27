@@ -84,6 +84,17 @@ body
     margin: auto;
 }
 
+#footer
+{
+    background-color: white;
+    text-align: center;
+}
+
+#footer a
+{
+    color: black;
+}
+
 /*
 
 contactInformation.html.twig
