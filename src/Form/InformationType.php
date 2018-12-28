@@ -17,14 +17,17 @@ class InformationType extends AbstractType
     {
         $builder
             ->add('firstname', TextType::class, array(
-                'label' => 'Prénom'
+                'label' => 'Prénom',
+                'invalid_message' => 'Le prénom n\'est pas valide'
             ))
             ->add('lastname', TextType::class, array(
+                'invalid_message' => 'Le nom n\'est pas valide',
                 'label' => 'Nom'
             ))
             ->add('birthdate', DateType::class, array(
                 'label' => 'Date de naissance',
                 'widget' => 'single_text',
+                'invalid_message' => 'La date est invalide',
                 'html5' => false,
                 'format' => 'dd-MM-yyyy',
                 'attr' => array(
@@ -33,12 +36,14 @@ class InformationType extends AbstractType
             ))
             ->add('country', CountryType::class, array(
                 'label' => 'Pays',
+                'invalid_message' => 'Le pays n\'est pas valide',
                 "preferred_choices" => array(
                     'FR')
             ))
             ->add('reducedprice', CheckboxType::class, array(
                 'label' => ('Tarif réduit (Un justicatif devra être présenté lors de l’entrée)'),
                 'required' => false,
+                'invalid_message' => 'La valeur du tarif réduit comporte une erreur',
                 'attr' => array(
                     'class' => 'information_reduced',
                 )

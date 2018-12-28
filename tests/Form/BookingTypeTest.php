@@ -11,37 +11,54 @@ namespace App\Tests\Form;
 
 use App\Entity\Booking;
 use App\Form\BookingType;
+use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
+use Symfony\Component\Form\Form;
 use Symfony\Component\Form\Test\TypeTestCase;
+use Symfony\Component\Validator\ConstraintViolationList;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class InformationTypeTest extends TypeTestCase
+
+class BookingTypeTest extends TypeTestCase
 {
-    /*
-    /**
-     * @test
-     *//*
+    private $validator;
+
+    protected function getExtensions()
+    {
+        $this->validator = $this->createMock(ValidatorInterface::class);
+
+        $this->validator
+            ->method('validate')
+            ->will($this->returnValue(new ConstraintViolationList()));
+        $this->validator
+            ->method('getMetadataFor')
+            ->will($this->returnValue(new ClassMetadata(Form::class)));
+
+        return array(
+            new ValidatorExtension($this->validator),
+        );
+    }
+
     public function testSubmitValidData()
     {
+        $date = new \DateTime();
+
 
         $formData = array(
-            'bookingNumber' => '1234567890',
-            'bookingDay' => '2018-12-26',
+            'bookingday' => $date,
             'type' => 'W',
-            'paid' => true,
             'quantity' => 1,
-            'mail' => 'test@test.com'
         );
 
         $objectToCompare = new Booking();
+        $objectToCompare->setBookingday($date);
 
         $form = $this->factory->create(BookingType::class, $objectToCompare);
 
         $object = new Booking();
-        $object->setBookingnumber('1234567890');
-        $object->setBookingday(new \DateTime('today'));
+        $object->setBookingday($date);
         $object->setType('W');
-        $object->setPaid(true);
         $object->setQuantity(1);
-        $object->setMail('test@test.com');
 
         $form->submit($formData);
 
@@ -56,5 +73,5 @@ class InformationTypeTest extends TypeTestCase
         {
             $this->assertArrayHasKey($key, $children);
         }
-    }*/
+    }
 }

@@ -27,9 +27,9 @@ class Booking
 
     /**
      * @ORM\Column(type="datetime", length=255)
-     * @Assert\DateTime
-     * @Assert\NotBlank
-     * @Assert\GreaterThanOrEqual("today", message="La date doit être au moins celle d'aujourd'hui")
+     * @Assert\DateTime(message="Le champ est invalide")
+     * @Assert\NotBlank(message="Le champ ne doit pas être nul")
+     * @Assert\GreaterThanOrEqual(value="today", message="La date doit être au moins celle d'aujourd'hui")
      * @OwnAssert\CheckBookingDate()
      */
     private $bookingday;
@@ -176,7 +176,7 @@ class Booking
         return $this->bookingday;
     }
 
-    public function setBookingday(\DateTimeInterface $bookingday): self
+    public function setBookingday($bookingday): self
     {
         $this->bookingday = $bookingday;
 

@@ -20,6 +20,7 @@ class BookingType extends AbstractType
                 'widget' => 'single_text',
                 'html5' => false,
                 'format' => 'dd-MM-yyyy',
+                'invalid_message' => 'La date est invalide',
                 'attr' => array(
                     'data-type' => 'date',
                     'readonly' => true
@@ -27,6 +28,7 @@ class BookingType extends AbstractType
                 ))
             ->add('type', ChoiceType::class, array(
                 'label' => 'Type de billet',
+                'invalid_message' => 'La type est invalide',
                 'choices' => array(
                     '1 journée' => 'W',
                     '1/2 journée' => 'H',
@@ -36,6 +38,7 @@ class BookingType extends AbstractType
             ))
             ->add('quantity', ChoiceType::class, array(
                 'label' => 'Nombre de billets',
+                'invalid_message' => 'La quantité est invalide',
                 'choices' => array(
                     '1' => 1,
                     '2' => 2,
