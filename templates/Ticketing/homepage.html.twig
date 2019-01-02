@@ -1,12 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-
-    {{ parent() }}
-    <script src="{{ asset('JS/homepage.js') }}"></script>
-
-{% endblock %}
-
 {% block body %}
 
     <img src="{{ asset('Images/logo_louvre.jpg') }}" alt="logo Louvre" id="logoLouvre">
@@ -87,8 +80,13 @@
             <button type="submit" class="btn btn-dark" id="submitBooking">Envoyer</button>
 
             {{ form_end(form) }}
-
-
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script src="{{ asset('JS/homepage.js') }}"></script>
 
 {% endblock %}

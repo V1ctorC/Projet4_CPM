@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+
+    <meta http-equiv="Refresh" content="5; url={{ absolute_url(path('summary')) }}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="blockError">
+        <div class="jumbotron">
+            <h1>Il y a un problème avec votre paiement !</h1>
+            <p>Vous pouvez réessayer dans quelques secondes.</p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

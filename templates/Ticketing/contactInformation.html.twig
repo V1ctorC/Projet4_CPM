@@ -1,13 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-
-{{ parent() }}
-
-    <script src="{{ asset('JS/contactInformation.js') }}"></script>
-
-{% endblock %}
-
 {% block body %}
 
     <h1 class="titleCenter">Vos coordonnées</h1>
@@ -49,5 +41,13 @@
         {{ form_end(form) }}
 
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script src="{{ asset('JS/contactInformation.js') }}"></script>
 
 {% endblock %}

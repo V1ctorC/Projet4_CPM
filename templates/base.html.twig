@@ -4,14 +4,13 @@
         <meta charset="UTF-8">
         {% block meta %}{% endblock %}
         <title>{% block title %}Musée du Louvre{% endblock %}</title>
+        <link rel="shotcut icon" href="{{ asset('Images/favicon.ico') }}">
 
         {% block stylesheets %}
 
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
-            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         {% endblock %}
     </head>
@@ -26,5 +25,9 @@
         </div>
     {% endblock %}
     </body>
-    {% block javascripts %}{% endblock %}
+
+    {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    {% endblock %}
 </html>

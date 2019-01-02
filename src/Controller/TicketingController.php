@@ -130,7 +130,7 @@ class TicketingController extends AbstractController
 
         if ($stripePayment != true)
         {
-            return $this->redirectToRoute('summary');
+            return $this->redirectToRoute('errorPaiement');
         }
 
         for ($i=0; $i<$booking->getQuantity();$i++)
@@ -207,7 +207,7 @@ class TicketingController extends AbstractController
     }
 
     /**
-     * @Route ("/errorDate", name="errorDate")
+     * @Route ("/errordate", name="errorDate")
      */
     public function errorDate()
     {
@@ -230,4 +230,11 @@ class TicketingController extends AbstractController
         return $this->render('Legal/termsOfSales.html.twig');
     }
 
+    /**
+     * @Route ("/errorpaiement", name="errorPaiement")
+     */
+    public function errorPaiement()
+    {
+        return $this->render('Error/errorPaiement.html.twig');
+    }
 }
