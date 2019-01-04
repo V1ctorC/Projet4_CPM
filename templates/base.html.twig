@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% block meta %}{% endblock %}
         <title>{% block title %}Musée du Louvre{% endblock %}</title>
-        <link rel="shotcut icon" href="{{ asset('Images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('Images/favicon.ico') }}">
 
         {% block stylesheets %}
 
@@ -20,16 +20,18 @@
         {% block body %}
         {% endblock %}
 
-    {% block footer %}
-        <div id="footer">
-            2018 - Agence 321Web - <a href="{{ path('legalMention') }}">Mention légales</a> -
-            <a href="{{ path('termsOfSales') }}">CGV</a>
-        </div>
-    {% endblock %}
+        {% block footer %}
+            <div id="footer">
+                2018 - Agence 321Web - <a href="{{ path('legalMention') }}">Mention légales</a> -
+                <a href="{{ path('termsOfSales') }}">CGV</a>
+            </div>
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        {% endblock %}
     </body>
 
-    {% block javascripts %}
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    {% endblock %}
+
 </html>
