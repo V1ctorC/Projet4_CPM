@@ -1,6 +1,7 @@
 html
 {
     height: 100%;
+    font-size: 16px;
 }
 
 body
@@ -9,6 +10,7 @@ body
     margin: 0;
     padding: 0;
     background-color: #F2F2F2;
+    font-size: 16px;
 }
 
 #textHome
@@ -157,6 +159,11 @@ summary.html.twig
     flex-wrap: wrap;
 }
 
+.infoBlock
+{
+    display: none;
+}
+
 /**
 
 errorDay.html.twig
@@ -169,8 +176,86 @@ errorDay.html.twig
     transform: translateY(-50%);
 }
 
-@media screen and (max-width: 640px)
+@media all and (max-width: 1024px)
 {
+
+    .ticketPrice
+    {
+        background-color: #23272A;
+        width: 30%;
+        color: white;
+        margin: 5px auto 0 auto;
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    #logoLouvre
+    {
+        width: 80%;
+    }
+
+    #welcomeMessage
+    {
+        padding: 5%;
+    }
+
+    #presentationText
+    {
+        width: 95%;
+        margin: 7% auto 7% auto;
+    }
+
+    #pricing
+    {
+        width: 95%;
+        margin: 7% auto 7% auto;
+    }
+
+    #openDays
+    {
+        width: 95%;
+        margin: 7% auto 7% auto;
+    }
+
+    #ticketing
+    {
+        width: 95%;
+        margin: 7% auto 7% auto;
+    }
+
+    #tableTicket
+    {
+        display: none;
+    }
+    .infoBlock
+    {
+        display: block;
+        width: 95%;
+        background-color: white;
+        margin: 40px auto 40px auto;
+    }
+
+    .infoNumber
+    {
+        background-color: #23272A;
+        color: white;
+        font-weight: bold;
+        font-size: 2em;
+        padding-left: 10px;
+    }
+
+    .infoCustommer ul
+    {
+        list-style-type: none;
+        margin: 5px 0 5px 0;
+        padding-left: 10px;
+    }
+
+    .infoCustommer li
+    {
+        margin: 5px 0 5px 0;
+    }
+
     #cancelAndPaiement
     {
         text-align: center;

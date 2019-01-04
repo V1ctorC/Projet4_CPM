@@ -3,6 +3,7 @@
 {% block body %}
 
     <h1 class="titleCenter">Résumé de votre réservation</h1>
+    <hr />
 
     <div id="tableTicket">
         <h2>Tableau récapitulatif</h2>
@@ -46,6 +47,31 @@
         </div>
 
     </div>
+
+    {% set counter = 0 %}
+
+    {% for customer in user %}
+
+        {% set counter = counter + 1 %}
+
+        <div class="infoBlock">
+            <div class="infoNumber">
+                Billet n°{{ counter }}
+            </div>
+            <div class="infoCustommer">
+                <ul>
+                    <li>Nom : {{ customer.lastname | capitalize}}</li>
+                    <li>Prénom : {{ customer.firstname | capitalize}}</li>
+                    <li>Date de naissance : {{ customer.birthdate | date('d-m-Y')}}</li>
+                    <li>Tarif réduit : {% if customer.reducedprice == 0 %}Non{% else %}Oui{% endif %}</li>
+                </ul>
+            </div>
+            <div class="ticketPrice">
+                Prix : {{ customer.price }}€
+            </div>
+        </div>
+
+    {% endfor %}
 
     <h2 style="text-align: center">Total : {{ sum }}€</h2>
     <div id="cancelAndPaiement">
