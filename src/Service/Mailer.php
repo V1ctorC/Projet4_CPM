@@ -9,26 +9,40 @@
 namespace App\Service;
 
 
+use PHPMailer\PHPMailer\PHPMailer;
+
 class Mailer
 {
-    protected $mailer;
     protected $templating;
 
-    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $templating)
+    public function __construct(\Twig_Environment $templating)
     {
-        $this->mailer = $mailer;
         $this->templating = $templating;
     }
 
     public function sendMessage($to, $subject, $body)
     {
-        $mail = (new \Swift_Message())
-            ->setFrom(['test.vetudes@gmail.com' => 'Musée du Louvre'])
-            ->setTo($to)
-            ->setSubject($subject)
-            ->setBody($body, 'text/html');
+        $mail = new PHPMailer();
+        $mail->CharSet = 'UTF-8';
 
-        $this->mailer->send($mail);
+        //ONLY LOCAL
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'test.vetudes@gmail.com';
+        $mail->Password = 'test2018';
+        $mail->Port= 465;
+        $mail->SMTPSecure = 'ssl';
+        
+        $mail->setFrom('test.vetudes@gmail.com', 'Musée du Louvre');
+        $mail->addAddress($to);
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $body;
+
+        $mail->send();
+
     }
 
     public function sendTicket($to, $user, $sum, $booking)
@@ -43,4 +57,7 @@ class Mailer
 
         $this->sendMessage($to, $subject, $body);
     }
+
+
+
 }
