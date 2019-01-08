@@ -20,6 +20,7 @@ class Information
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le champs doit être rempli")
      * @Assert\Length(min=2, minMessage="Votre prénom doit comporter au moins 2 caractères")
      * @Assert\Regex(
      *     pattern="/\d/",
@@ -31,11 +32,12 @@ class Information
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=2, minMessage="Votre prénom doit comporter au moins 2 caractères")
+     * @Assert\NotBlank(message="Le champs doit être rempli")
+     * @Assert\Length(min=2, minMessage="Votre nom doit comporter au moins 2 caractères")
      * @Assert\Regex(
      *     pattern="/\d/",
      *     match=false,
-     *     message="Votre prénom ne doit pas comporter de chiffres"
+     *     message="Votre nom ne doit pas comporter de chiffres"
      * )
      */
     private $lastname;
@@ -51,6 +53,7 @@ class Information
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Vous devez sélectionner un pays")
      */
     private $country;
 
