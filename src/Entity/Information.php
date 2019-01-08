@@ -42,7 +42,9 @@ class Information
 
     /**
      * @ORM\Column(type="datetime", length=255)
-     * @Assert\NotBlank
+     * @Assert\DateTime(message="Le champ est invalide")
+     * @Assert\NotBlank(message="Le champ doit être rempli")
+     * @Assert\LessThan(value="today", message="Vous devez être né avant aujourd'hui")
      * @OwnAssert\CheckBirthdate()
      */
     private $birthdate;
@@ -166,7 +168,7 @@ class Information
         return $this->birthdate;
     }
 
-    public function setBirthdate(\DateTimeInterface $birthdate): self
+    public function setBirthdate($birthdate): self
     {
         $this->birthdate = $birthdate;
 

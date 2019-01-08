@@ -26,7 +26,7 @@ class PriceCalculation
         {
             return $price = 10;
         }
-        if (($age < 12) && ($age >= 4) )
+        elseif (($age < 12) && ($age >= 4) )
         {
             return $price = 8;
         }
