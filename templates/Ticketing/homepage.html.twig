@@ -5,14 +5,14 @@
     <img src="{{ asset('Images/logo_louvre.jpg') }}" alt="logo Louvre" id="logoLouvre">
 
     <div id="welcomeMessage">
-        <h1>Billeterie du musée du Louvre</h1>
+        <h1>Billetterie du musée du Louvre</h1>
         <p>Achetez dès maintenant vos billets pour éviter la file d'attente !</p>
         <a class="btn btn-light" href="#ticketing">Acheter vos billets</a>
     </div>
 
     <div id="presentationText" class="frame">
         <h2>Un achat simple</h2>
-        <p>Vous avez la possibilité d'acheter vos billets directement sur ce site de manière sécurisé</p>
+        <p>Vous avez la possibilité d'acheter vos billets directement sur ce site de manière sécurisée</p>
         <p>Pour cela, rien de plus simple : </p>
         <ul>
             <li>Choisissez la date qui vous convient</li>
@@ -21,7 +21,7 @@
             <li>Procédez au paiement</li>
             <li>Et c'est tout !</li>
         </ul>
-        <p>Vous recevrez ensuite par mail le ticket qu'il vous faudra présenter pour pouvoir accéder au musée</p>
+        <p>Vous recevrez ensuite par mail le billet qu'il vous faudra présenter pour pouvoir accéder au musée</p>
     </div>
 
     <div id="pricing" class="frame">
@@ -31,7 +31,7 @@
             <ul>
                 <li>Tarif normal (à partir de 12 ans) : 16€</li>
                 <li>Tarif enfant (à partir de 4 ans et jusqu'à 12 ans) : 8€</li>
-                <li>Tarif senior (à partir de 60 ans) : 12€</li>
+                <li>Tarif sénior (à partir de 60 ans) : 12€</li>
                 <li>Tarif réduit (Étudiant, employé du musée, d'un ministère de la Culture, militaire ...) : 10€</li>
             </ul>
         </div>
@@ -40,7 +40,7 @@
             <ul>
                 <li>Tarif normal (à partir de 12 ans) : 8€</li>
                 <li>Tarif enfant (à partir de 4 ans et jusqu'à 12 ans) : 4€</li>
-                <li>Tarif senior (à partir de 60 ans) : 6€</li>
+                <li>Tarif sénior (à partir de 60 ans) : 6€</li>
                 <li>Tarif réduit (Étudiant, employé du musée, d'un ministère de la Culture, militaire ...) : 5€</li>
             </ul>
         </div>
@@ -48,7 +48,7 @@
     </div>
 
     <div id="openDays" class="frame">
-        <h2>Les horaires d'ouvertures</h2>
+        <h2>Les horaires d'ouverture</h2>
         <p>Les horaires pour accéder au musée </p>
         <ul id="listHours">
             <li>Lundi : 10h - 18h</li>
@@ -72,8 +72,8 @@
             {{ form_row(form.bookingday) }}
             {{ form_row(form.type) }}
             <div id="halfDay" class="alert alert-info">
-                <p>Il est plus de 14h, vous ne pouvez acheter que des billets pour la demi-journée.
-                Pour acheter des billets pour une journée entière, vous devez choisir une autre journée.</p>
+                <p>Il est plus de 14h, vous pouvez acheter des billets pour la demi-journée uniquement.
+                Pour acheter des billets en journée entière, vous devez choisir une autre date.</p>
             </div>
             {{ form_row(form.quantity) }}
 

@@ -28,7 +28,7 @@ class Booking
     /**
      * @ORM\Column(type="datetime", length=255)
      * @Assert\DateTime(message="Le champ est invalide")
-     * @Assert\NotBlank(message="Le champ ne doit pas être nul")
+     * @Assert\NotBlank(message="Le champ doit être rempli")
      * @Assert\GreaterThanOrEqual(value="today", message="La date doit être au moins celle d'aujourd'hui")
      * @OwnAssert\CheckBookingDate()
      */
@@ -36,7 +36,7 @@ class Booking
 
     /**
      * @ORM\Column(type="string", length=1)
-     * @Assert\NotNull(message="Vous devez selectionner un type de ticket")
+     * @Assert\NotNull(message="Vous devez selectionner un type de billet")
      * @OwnAssert\CheckBookingType
      */
     private $type;

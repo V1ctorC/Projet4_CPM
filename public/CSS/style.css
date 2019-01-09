@@ -271,4 +271,9 @@ errorDay.html.twig
     {
         margin: 10px auto 10px auto;
     }
+
+    .listInformationForm
+    {
+        width: 95%;
+    }
 }
