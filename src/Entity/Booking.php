@@ -50,9 +50,9 @@ class Booking
      * @ORM\Column(type="integer")
      * @Assert\Range(
      *     min = 1,
-     *     max = 10,
+     *     max = 15,
      *     minMessage="Vous devez réserver au moins 1 billet",
-     *     maxMessage="Vous ne pouvez réserver plus de 10 billets"
+     *     maxMessage="Vous ne pouvez réserver plus de 15 billets"
      * )
      */
     private $quantity;
