@@ -34,7 +34,7 @@ class TicketingControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/');
 
-        $this->assertGreaterThan(0, $crawler->filter('html:contains("Billeterie du musée du Louvre")')
+        $this->assertGreaterThan(0, $crawler->filter('html:contains("Billetterie du musée du Louvre")')
         ->count());
     }
 
